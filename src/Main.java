@@ -1,5 +1,9 @@
-/**
- * Created by adl on 10.02.2017.
- */
 public class Main {
+
+    public static void main(String[] args) {
+        MessageRenderer mr = MessageSupportFactory.getInstance().getMessageRenderer();
+        MessageProvider mp = MessageSupportFactory.getInstance().getMessageProvider();
+        mr.setMessageProvider(mp);
+        mr.render();
+    }
 }
