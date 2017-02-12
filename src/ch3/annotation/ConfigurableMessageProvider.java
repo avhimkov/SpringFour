@@ -1,6 +1,6 @@
 package ch3.annotation;
 
-import org.adl.spring.ch3.MessageProvider;
+import ch3.MessageProvider;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
