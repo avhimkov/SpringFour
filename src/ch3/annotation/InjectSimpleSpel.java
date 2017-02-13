@@ -5,7 +5,7 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.support.GenericXmlApplicationContext;
 import org.springframework.stereotype.Service;
 
-@Service("injectSimleSpel")
+@Service("injectSimpleSpel")
 public class InjectSimpleSpel {
     @Value("#{injectSimleConfig.name}")
     private String name;
