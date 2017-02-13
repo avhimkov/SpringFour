@@ -1,12 +1,21 @@
-package ch3.xml;
+package ch3.annotation;
 
+import ch3.xml.InjectSimple;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.support.GenericXmlApplicationContext;
+import org.springframework.stereotype.Service;
 
+@Service("injectSimleSpel")
 public class InjectSimpleSpel {
+    @Value("#{injectSimleConfig.name}")
     private String name;
+    @Value("#{injectSimleConfig.age+1}")
     private int age;
+    @Value("#{injectSimleConfig.height}")
     private float height;
+    @Value("#{injectSimleConfig.programmer}")
     private boolean programmer;
+    @Value("#{injectSimleConfig.ageInSeconds}")
     private Long ageInSeconds;
 
 
@@ -58,7 +67,7 @@ public class InjectSimpleSpel {
         GenericXmlApplicationContext ctx = new GenericXmlApplicationContext();
         ctx.load("classpath:META-INF/spring/app-context-xml.xml");
         ctx.refresh();
-        InjectSimple simple = (InjectSimple) ctx.getBean("injectionSimpleSpel");
+        InjectSimple simple = (InjectSimple) ctx.getBean("injectSimpleSpel");
         System.out.println(simple);
     }
 }
