@@ -6,7 +6,7 @@
     <bean id="oracle" name="wiseworm" class="ch3.BookwormOracle"/>
     <bean id="injectRef" class="ch3.xml.InjectRef">
             <property name="oracle">
-                    <ref local="oracle"/>
+                    <ref bean="wiseworm"/>
             </property>
     </bean>
 </beans>
