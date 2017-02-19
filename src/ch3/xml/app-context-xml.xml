@@ -3,37 +3,17 @@
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
        xsi:schemaLocation="http://www.springframework.org/schema/beans
             http://www.springframework.org/schema/beans/spring-beans.xsd">
-    <bean id="oracle" name="wiseworm" class="ch3.BookwormOracle"/>
-    <bean id="injectCollection" class="ch3.xml.CollectionInjection">
-        <property name="map">
-            <map>
-                <entry key="someValue">
-                    <value>
-                        Hello World!
-                    </value>
-                </entry>
-                <entry key="someBean">
-                    <ref local="oracle"/>
-                </entry>
-            </map>
-        </property>
-        <property name="props">
-            <props>
-                <prop key="firstName">Cris</prop>
-                <prop key="secondName">Schaefer</prop>
-            </props>
-        </property>
-        <property name="set">
-            <set>
-                <value>Hello World!</value>
-                <ref local="oracle" />
-            </set>
-        </property>
-        <property name = "list">
-            <list>)
-                <value>Hello World!</value>
-                <ref local = "oracle"/>
-            </list>
+    <bean id="helper"
+          class="ch3.MyHelper" scope="prototype"/>
+    <bean id="abstractLookupBean"
+          class="ch3.AbstractLookupDemoBean">
+        <lookup-method name="getMyHelper" bean="helper"/>
+    </bean>
+
+    <bean id="standartLookupBean"
+          class="ch3.StandardLookupDemoBean">
+        <property name="myHelper">
+            <ref bean="helper"/>
         </property>
     </bean>
 </beans>

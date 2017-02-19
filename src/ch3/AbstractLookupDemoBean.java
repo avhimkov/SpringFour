@@ -1,6 +1,6 @@
 package ch3;
 
-public abstract class AЬstractLookupDemoBean implements DemoBean{
+public abstract class AbstractLookupDemoBean implements DemoBean{
     public abstract MyHelper getMyHelper();
 
     @Override
