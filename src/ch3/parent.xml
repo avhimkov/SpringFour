@@ -4,7 +4,7 @@
        xmlns:c="http://www.springframework.org/schema/c"
        xsi:schemaLocation="http://www.springframework.org/schema/beans
                 http://www.springframework.org/schema/beans/spring-beans.xsd">
-       <beans id="injectBean" class="java.lang.String" c:_0="Bean In Parent"/>
-       <beans id="injectionBeanParent" class="java.lang.String" c:_0="Bean In Parent"/>
+       <bean id="injectBean" class="java.lang.String" c:_0="Bean In Parent"/>
+       <bean id="injectionBeanParent" class="java.lang.String" c:_0="Bean In Parent"/>
 
 </beans>
