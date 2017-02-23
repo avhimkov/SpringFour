@@ -6,14 +6,14 @@ import org.springframework.util.StopWatch;
 public class MethodReplacementExample {
     public static void main(String[] args) {
         GenericXmlApplicationContext ctx = new GenericXmlApplicationContext();
-        ctx.load("classpath:META-INF/Spring/parent.xml");
+        ctx.load("classpath:ch3/xml/app-context-xml.xml");
         ctx.refresh();
 
         ReplacementTarget replacementTarget = (ReplacementTarget) ctx.getBean("replacementTarget");
         ReplacementTarget standardTarget = (ReplacementTarget) ctx.getBean("standardTarget");
 
         displayInfo(replacementTarget);
-        displayInfo(replacementTarget);
+        displayInfo(standardTarget);
 
     }
 

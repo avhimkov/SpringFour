@@ -11,6 +11,6 @@
             <arg-type>String</arg-type>
         </replaced-method>
     </bean>
-    <bean id="standartTarget"
+    <bean id="standardTarget"
           class="ch3.ReplacementTarget"/>
 </beans>
