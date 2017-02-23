@@ -3,17 +3,14 @@
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
        xsi:schemaLocation="http://www.springframework.org/schema/beans
             http://www.springframework.org/schema/beans/spring-beans.xsd">
-    <bean id="helper"
-          class="ch3.MyHelper" scope="prototype"/>
-    <bean id="abstractLookupBean"
-          class="ch3.AbstractLookupDemoBean">
-        <lookup-method name="getMyHelper" bean="helper"/>
+    <bean id="methodReplacer"
+          class="ch3.FormatMessageReplacer"/>
+    <bean id="replacementTarget"
+          class="ch3.ReplacementTarget">
+        <replaced-method name="formatMessage" replacer="methodReplacer">
+            <arg-type>String</arg-type>
+        </replaced-method>
     </bean>
-
-    <bean id="standartLookupBean"
-          class="ch3.StandardLookupDemoBean">
-        <property name="myHelper">
-            <ref bean="helper"/>
-        </property>
-    </bean>
+    <bean id="standartTarget"
+          class="ch3.ReplacementTarget"/>
 </beans>
