@@ -3,14 +3,8 @@
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
        xsi:schemaLocation="http://www.springframework.org/schema/beans
             http://www.springframework.org/schema/beans/spring-beans.xsd">
-    <bean id="methodReplacer"
-          class="ch3.FormatMessageReplacer"/>
-    <bean id="replacementTarget"
-          class="ch3.ReplacementTarget">
-        <replaced-method name="formatMessage" replacer="methodReplacer">
-            <arg-type>String</arg-type>
-        </replaced-method>
-    </bean>
-    <bean id="standardTarget"
-          class="ch3.ReplacementTarget"/>
+    <bean id="name1" name="name2, name3, name4;name5"
+          class="java.lang.String"/>
+    <alias name="name1" alias="name6"/>
+
 </beans>
