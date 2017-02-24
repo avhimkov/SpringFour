@@ -1,11 +1,14 @@
 package ch3.xml;
 
+import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.GenericXmlApplicationContext;
+
+import java.util.Arrays;
 
 public class BeanNameAliasing {
     public static void main(String[] args) {
         GenericXmlApplicationContext ctx = new GenericXmlApplicationContext();
-        ctx.load("classpath:app-context-xml.xml");
+        ctx.load("classpath:ch3/xml/app-context-xml.xml");
         ctx.refresh();
 
         String s1 = (String) ctx.getBean("name1");
