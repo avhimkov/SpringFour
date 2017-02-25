@@ -31,7 +31,7 @@ public class Target {
 
     public static void main(String[] args) {
         GenericXmlApplicationContext ctx = new GenericXmlApplicationContext();
-        ctx.load("classpath:META-INF/ch3/xml/app-context-xml.xml");
+        ctx.load("classpath:ch3/xml/app-context-xml.xml");
         ctx.refresh();
 
         Target t = null;

@@ -1,13 +1,9 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <beans xmlns="http://www.springframework.org/schema/beans"
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:p="http://www.springframework.org/schema/p"
        xsi:schemaLocation="http://www.springframework.org/schema/beans
             http://www.springframework.org/schema/beans/spring-beans.xsd">
-    <bean id="foo" class="ch3.Foo" />
-    <bean id="bar1" class="ch3.Bar" />
-    <bean id="targetByName" autowire="byName" class="ch3.xml.Target" lazy-init="true"/>
-    <bean id="targetByType" autowire="byType" class="ch3.xml.Target" lazy-init="true"/>
-    <bean id="targetConstructor" autowire="constructor" class="ch3.xml.Target" lazy-init="true"/>
-
-
+    <bean id="inheritParent" class="ch3.xml.SimpleBean" p:name="Chris Schaefer" p:age="32"/>
+    <bean id="inheritChild" class="ch3.xml.SimpleBean" parent="inheritParent" p:age="33"/>
 </beans>
