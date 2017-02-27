@@ -1,11 +1,12 @@
 package ch4;
 
 import org.springframework.beans.factory.BeanCreationException;
-import org.springframework.beans.factory.InitializingBean;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.GenericXmlApplicationContext;
 
-public class SimpleBeanWithinterface implements InitializingBean{
+import javax.annotation.PostConstruct;
+
+public class SimpleBeanWithJSR250 {
     private static final String DEFAULT_NAME = "Luke Skywalker";
     private String name;
     private int age = Integer.MIN_VALUE;
@@ -18,8 +19,8 @@ public class SimpleBeanWithinterface implements InitializingBean{
         this.age = age;
     }
 
-    @Override
-    public void afterPropertiesSet() throws Exception {
+    @PostConstruct
+    public void init() throws Exception {
         System.out.println("Init bean");
 
         if (name == null) {
@@ -27,7 +28,7 @@ public class SimpleBeanWithinterface implements InitializingBean{
             name = DEFAULT_NAME;
         }
         if (age == Integer.MIN_VALUE) {
-            throw new IllegalArgumentException("Уои must set the age property of any beans of type" + SimpleBeanWithinterface.class);
+            throw new IllegalArgumentException("Уои must set the age property of any beans of type" + SimpleBeanWithJSR250.class);
         }
     }
 
@@ -40,14 +41,14 @@ public class SimpleBeanWithinterface implements InitializingBean{
         ctx.load("classpath:META-INF/app-context-xml.xml");
         ctx.refresh();
 
-        SimpleBeanWithinterface simpleBean1 = getBean("simpleBean1", ctx);
-        SimpleBeanWithinterface simpleBean2 = getBean("simpleBean2", ctx);
-        SimpleBeanWithinterface simpleBean3 = getBean("simpleBean3", ctx);
+        SimpleBeanWithJSR250 simpleBean1 = getBean("simpleBean1", ctx);
+        SimpleBeanWithJSR250 simpleBean2 = getBean("simpleBean2", ctx);
+        SimpleBeanWithJSR250 simpleBean3 = getBean("simpleBean3", ctx);
     }
 
-    private static SimpleBeanWithinterface getBean(String beanName, ApplicationContext ctx) {
+    private static SimpleBeanWithJSR250 getBean(String beanName, ApplicationContext ctx) {
         try {
-            SimpleBeanWithinterface bean = (SimpleBeanWithinterface) ctx.getBean(beanName);
+            SimpleBeanWithJSR250 bean = (SimpleBeanWithJSR250) ctx.getBean(beanName);
             System.out.println(bean);
             return bean;
         } catch (BeanCreationException ex) {
@@ -55,6 +56,4 @@ public class SimpleBeanWithinterface implements InitializingBean{
             return null;
         }
     }
-
-
 }
