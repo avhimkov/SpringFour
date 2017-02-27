@@ -5,7 +5,7 @@
        xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd"
        default-lazy-init="true">
 
-    <bean id="simpleBean1" class="ch4.SimpleBean" init-method="init" p:name="Samuel" p:age="32"/>
-    <bean id="simpleBean2" class="ch4.SimpleBean" init-method="init" p:age="32"/>
-    <bean id="simpleBean3" class="ch4.SimpleBean" init-method="init" p:name="Samuel"/>
+    <bean id="simpleBean1" class="ch4.SimpleBeanWithinterface" p:name="Samuel" p:age="32"/>
+    <bean id="simpleBean2" class="ch4.SimpleBeanWithinterface" p:age="32"/>
+    <bean id="simpleBean3" class="ch4.SimpleBeanWithinterface" p:name="Samuel"/>
 </beans>
