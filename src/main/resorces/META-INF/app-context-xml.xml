@@ -8,5 +8,5 @@
     <bean id="shaDigest" class="ch4.MessageDigestFactoryBean"
           p:algorithmName="SHA1"/>
     <bean id="defaultDigest" class="ch4.MessageDigestFactoryBean"/>
-    <bean id="digest" class="ch4.MessageDigester" p:digest1-ref="shaDigest" p:digest2-ref="defaultDigest"/>
+    <bean id="digester" class="ch4.MessageDigester" p:digest1-ref="shaDigest" p:digest2-ref="defaultDigest"/>
 </beans>
