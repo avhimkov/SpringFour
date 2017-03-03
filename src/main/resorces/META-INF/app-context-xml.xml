@@ -5,8 +5,10 @@
        xsi:schemaLocation="http://www.springframework.org/schema/beans
            http://www.springframework.org/schema/beans/spring-beans.xsd">
 
-    <bean id="shaDigest" class="ch4.MessageDigestFactoryBean"
+    <bean id="shaDigestFactory" class="ch4.MessageDigestFactory"
           p:algorithmName="SHA1"/>
-    <bean id="defaultDigest" class="ch4.MessageDigestFactoryBean"/>
-    <bean id="digester" class="ch4.MessageDigester" p:digest1-ref="shaDigest" p:digest2-ref="defaultDigest"/>
+    <bean id="defaultDigestFactory" class="ch4.MessageDigestFactory"/>
+    <bean id="shaDigest" factory-bean="shaDigestFactory" factory-method="createInstance"/>
+    <bean id="defaultDigest" factory-bean="shaDigestFactory" factory-method="createInstance"/>
+    <bean id="digest" class="ch4.MessageDigester" p:digest1-ref="shaDigest" p:digest2-ref="defaultDigest"/>
 </beans>
