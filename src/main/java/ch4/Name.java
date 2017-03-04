@@ -4,6 +4,11 @@ public class Name {
     private String firstName;
     private String lastName;
 
+    public Name(String s, String s1) {
+        this.firstName = firstName;
+        this.lastName = lastName;
+    }
+
     public String getFirstName() {
         return firstName;
     }
