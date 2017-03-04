@@ -112,7 +112,7 @@ public class PropertyEditorBean {
         }
     }
 
-    public static void main(String[] args) throws Exception{
+    public static void main(String[] args) throws Exception {
         File file = File.createTempFile("test", "txt");
         file.deleteOnExit();
         GenericXmlApplicationContext ctx = new GenericXmlApplicationContext();
