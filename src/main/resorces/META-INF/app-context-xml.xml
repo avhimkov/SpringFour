@@ -1,35 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <beans xmlns="http://www.springframework.org/schema/beans"
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-       xmlns:utile="http://www.springframework.org/schema/util"
        xmlns:p="http://www.springframework.org/schema/p"
        xsi:schemaLocation="http://www.springframework.org/schema/beans
-           http://www.springframework.org/schema/beans/spring-beans.xsd
-           http://www.springframework.org/schema/util
-           http://www.springframework.org/schema/util/spring-util.xsd">
+           http://www.springframework.org/schema/beans/spring-beans.xsd">
 
-    <bean id="customEditorConfigurer" class="org.springframework.beans.factory.config.CustomEditorConfigurer"
-          p:propertyEditorRegistrars-ref="propertyEditorRegistrarsList"/>
-    <utile:list id="propertyEditorRegistrarsList">
-    <bean class="ch4.PropertyEditorBean$CustomPropertyEditorRegistrar"/>
-    </utile:list>
-
-    <bean id="builtinSample" class="ch4.PropertyEditorBean"
-          p:bytes="Hello World"
-          p:cls="java.lang.String"
-          p:trueOrFalse="true"
-          p:stringList-ref="stringList"
-          p:stream="test.txt"
-          p:floatValue="l23.45678"
-          p:date="05/03/13"
-          p:file="#{systemProperties['java.io.tmpdir']}#{systemProperties['file.separator']}test.txt"
-          p:locale="en_US"
-          p:pattern="a*b"
-          p:properties="name=Chris age=32"
-          p:trimString="String need trimming"
-          p:url="http://www.springframework.org"/>
-    <utile:list id="stringList">
-        <value>String number 1</value>
-        <value>String number 2</value>
-    </utile:list>
+    <bean id="customEditorConfigurer" class="org.springframework.beans.factory.config.CustomEditorConfigurer">
+        <property name="customEditors">
+            <map>
+                <entry key = "ch4.Name" value="ch4.NamePropertyEditor"/>
+            </map>
+        </property>
+    </bean>
+    <bean id="exampleBean" class="ch4.CustomEditorExample"
+        p:name="Chris Schaefer"/>
 </beans>
