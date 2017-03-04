@@ -8,7 +8,7 @@
     <bean id="customEditorConfigurer" class="org.springframework.beans.factory.config.CustomEditorConfigurer">
         <property name="customEditors">
             <map>
-                <entry key = "ch4.Name" value="ch4.NamePropertyEditor"/>
+                <entry key="ch4.Name" value="ch4.NamePropertyEditor"/>
             </map>
         </property>
     </bean>
