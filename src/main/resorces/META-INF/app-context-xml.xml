@@ -6,6 +6,6 @@
        xsi:schemaLocation="http://www.springframework.org/schema/beans
            http://www.springframework.org/schema/beans/spring-beans.xsd">
 
-    <bean id="messageRendered" class="ch4.StandardOutMessageRenderer" p:messageProvider-ref="messageProvider"/>
+    <bean id="messageRenderer" class="ch4.StandardOutMessageRenderer" p:messageProvider-ref="messageProvider"/>
     <bean id="messageProvider" class="ch4.ConfigurableMessageProvider" c:message="This is а configurable message"/>
 </beans>
