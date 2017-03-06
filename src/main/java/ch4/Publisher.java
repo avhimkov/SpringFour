@@ -19,7 +19,7 @@ public class Publisher implements ApplicationContextAware {
     }
 
     public static void main(String[] args) {
-        ApplicationContext ctx = new ClassPathXmlApplicationContext("classpath:META-INF/app-context=xml.xml");
+        ApplicationContext ctx = new ClassPathXmlApplicationContext("classpath:META-INF/app-context-xml.xml");
         Publisher pub = (Publisher) ctx.getBean("publisher");
         pub.publish("Hello World");
         pub.publish("The quick brown fox j umped over the lazy dog");
