@@ -8,7 +8,7 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
 @Configuration
 @ImportResource(value = "classpath:META-INF/app-context-xml.xml")
 @PropertySource(value = "message.properties")
-@ComponentScan(basePackages = {})
+@ComponentScan(basePackages = {"ch4"})
 @EnableTransactionManagement
 public class AppConfig {
     @Autowired
@@ -28,6 +28,4 @@ public class AppConfig {
         renderer.setMessageProvider(messageProvider());
         return renderer;
     }
-
-
 }
