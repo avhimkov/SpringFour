@@ -4,5 +4,5 @@
        xsi:schemaLocation="http://www.springframework.org/schema/beans
            http://www.springframework.org/schema/beans/spring-beans.xsd" profile="highschool">
 
-    <bean id="foodProviderService" class="ch4.kindergarten.FoodProviderServiceImpl"/>
+    <bean id="foodProviderService" class="ch4.highschool.FoodProviderServiceImpl"/>
 </beans>
