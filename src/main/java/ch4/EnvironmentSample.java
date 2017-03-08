@@ -16,14 +16,12 @@ public class EnvironmentSample {
         ConfigurableEnvironment env = ctx.getEnvironment();
         MutablePropertySources propertySources = env.getPropertySources();
         Map appMap = new HashMap();
-        appMap.put("application.home", "application.home");
-        propertySources.addLast(new MapPropertySource("PROSPRING4_MAO", appMap));
+        appMap.put("user.home", "application.home");
+        propertySources.addFirst(new MapPropertySource("PROSPRING4_MAO", appMap));
         System.out.println("user.home: " + System.getProperty("user.home"));
         System.out.println("JAVA_HOME: " + System.getenv("JAVA_HOME"));
 
         System.out.println("user.home: " + env.getProperty("user.home"));
         System.out.println("JAVA_HOME: " + env.getProperty("JAVA_HOME"));
-
-        System.out.println("application.home: " + env.getProperty("application.home"));
     }
 }
