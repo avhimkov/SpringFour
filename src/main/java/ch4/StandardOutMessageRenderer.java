@@ -1,7 +1,15 @@
 package ch4;
 
+import javax.inject.Inject;
+import javax.inject.Named;
+import javax.inject.Singleton;
+
+@Named("messageRenderer")
+@Singleton
 public class StandardOutMessageRenderer implements MessageRenderer {
-    private MessageProvider messageProvider;
+    @Inject
+    @Named("messageProvider")
+    private MessageProvider messageProvider = null;
 
     @Override
     public void render() {
