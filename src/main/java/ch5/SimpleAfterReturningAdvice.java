@@ -18,7 +18,7 @@ public class SimpleAfterReturningAdvice implements AfterReturningAdvice{
     }
 
     @Override
-    public void afterReturning(Object o, Method method, Object[] objects, Object o1) throws Throwable {
+    public void afterReturning(Object returnValue, Method method, Object[] args, Object target) throws Throwable {
         System.out.println("");
         System.out.println("After method: " + method.getName());
     }
