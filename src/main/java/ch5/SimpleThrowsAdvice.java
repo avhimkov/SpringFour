@@ -26,7 +26,7 @@ public class SimpleThrowsAdvice implements ThrowsAdvice {
         }
     }
 
-    @Override
+//    @Override
     public void afterThrowing(Exception ex) throws Throwable {
         System.out.println("***");
         System.out.println("Generic Exception Capture");
@@ -34,7 +34,7 @@ public class SimpleThrowsAdvice implements ThrowsAdvice {
         System.out.println("***\n");
     }
 
-    @Override
+//    @Override
     public void afterThrowing(Method method, Object[] args, Object target, IllegalArgumentException ex) throws Throwable {
         System.out.println("***");
         System.out.println("IllegalArgumentException Capture");
