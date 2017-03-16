@@ -1,6 +1,6 @@
 package ch5;
 
-public class NarneBean {
+public class NameBean {
     public void foo(){
         System.out.println("foo");
     }
