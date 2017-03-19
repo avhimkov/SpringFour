@@ -9,7 +9,6 @@ public class ProxyPerfTest {
     public static void main(String[] args) {
         SimpleBean target = new DefaultSimpleBean();
         Advisor advisor = new DefaultPointcutAdvisor(new TestPointcut(), new NoOpBeforeAdvice());
-
         runCglibTests(advisor, target);
         runCglibFrozenTests(advisor, target);
         runJdkTests(advisor, target);
@@ -20,7 +19,6 @@ public class ProxyPerfTest {
         pf.setProxyTargetClass(true);
         pf.setTarget(target);
         pf.addAdvisor(advisor);
-
         SimpleBean proxy = (SimpleBean) pf.getProxy();
         System.out.println("Running CGLIB (Standard) Tests");
         test(proxy);
@@ -42,8 +40,8 @@ public class ProxyPerfTest {
         ProxyFactory pf = new ProxyFactory();
         pf.setProxyTargetClass(true);
         pf.setTarget(target);
+        pf.addAdvisor(advisor);
         pf.setInterfaces(new Class[]{SimpleBean.class});
-
         SimpleBean proxy = (SimpleBean) pf.getProxy();
         System.out.println("Running JDK Tests");
         test(proxy);
@@ -59,9 +57,7 @@ public class ProxyPerfTest {
             bean.advised();
         }
         after = System.currentTimeMillis();
-
         System.out.println("Took " + (after - before) + " ms");
-
         System.out.println("Testing Unadvised Method");
         before = System.currentTimeMillis();
         for (int x = 0; x < 500000; x++) {
@@ -91,11 +87,7 @@ public class ProxyPerfTest {
             advised.getClass();
         }
         after = System.currentTimeMillis();
-
         System.out.println("Took " + (after - before) + " ms");
-
         System.out.println(">>>\n");
-
-
     }
 }
