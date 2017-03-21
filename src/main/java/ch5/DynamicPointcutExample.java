@@ -17,12 +17,12 @@ public class DynamicPointcutExample {
 
         SampleBean proxy = (SampleBean) pf.getProxy();
 
-        proxy.foo(1);
-        proxy.foo(10);
-        proxy.foo(100);
-
-        proxy.bar();
-        proxy.bar();
-        proxy.bar();
+//        proxy.foo(1);
+//        proxy.foo(10);
+//        proxy.foo(100);
+//
+//        proxy.bar();
+//        proxy.bar();
+//        proxy.bar();
     }
 }
