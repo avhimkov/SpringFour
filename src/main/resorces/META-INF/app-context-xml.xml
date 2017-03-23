@@ -3,37 +3,23 @@
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
        xsi:schemaLocation="http://www.springframework.org/schema/beans
            http://www.springframework.org/schema/beans/spring-beans.xsd">
-    <bean id="myBean1" class="ch5.MyBean">
-        <property name="dep">
-        <ref bean="myDependency1"/>
-        </property>
-    </bean>
-    <bean id="myBean2" class="ch5.MyBean">
-        <property name="dep">
-            <ref bean="myDependency2"/>
-        </property>
-    </bean>
-    <bean id="myDependency1" class="org.springframework.aop.framework.ProxyFactoryBean">
+
+    <bean id="bean" class="org.springframework.aop.framework.ProxyFactory">
         <property name="target">
-            <ref bean="myDependencyTarget"/>
-        </property>
-        <property name="interceptorNames">
-            <list>
-                <value>advice</value>
-            </list>
-        </property>
-    </bean>
-    <bean id="advice" class="ch5.MyAdvice"/>
-    <bean id="advisor" class="org.springframework.aop.support.DefaultIntroductionAdvisor">
-        <property name="advice">
-            <ref bean="advice"/>
-        </property>
-        <property name="pointcut">
-            <bean class="org.springframework.aop.aspectj.AspectJExpressionPointcut">
-                <property name="expression">
-                    <value>execution(* foo*(..))</value>
+            <bean id="myBean2" class="ch5.TargetBean">
+                <property name="name">
+                    <value>Chris Schaefer</value>
                 </property>
             </bean>
         </property>
+        <property name="interceptorNames">
+            <list>
+                <value>advisor</value>
+            </list>
+        </property>
+        <property name="proxyTargetClass">
+            <value>true</value>
+        </property>
     </bean>
+    <bean id="advisor" class="ch5.IsModifiedAdvisor"/>
 </beans>
