@@ -1,12 +1,9 @@
 package ch5;
 
-import org.springframework.aop.MethodBeforeAdvice;
-import java.lang.reflect.Method;
+import org.aspectj.lang.JoinPoint;
 
-public class MyAdvice implements MethodBeforeAdvice{
-
-    @Override
-    public void before(Method method, Object[] args, Object target) throws Throwable {
-        System.out.println("Executing" + method);
+public class MyAdvice {
+    public void simleBeforAdvice(JoinPoint joinPoint){
+        System.out.println("Executing" + joinPoint.getSignature().getDeclaringTypeName() + " " + joinPoint.getSignature().getName());
     }
 }
