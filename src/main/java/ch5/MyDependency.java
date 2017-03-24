@@ -1,7 +1,7 @@
 package ch5;
 
 public class MyDependency {
-    public void foo(){
+    public void foo(int intValue){
         System.out.println("foo(int): " + intValue);
     }
     public void bar(){

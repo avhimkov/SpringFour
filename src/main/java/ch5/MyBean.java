@@ -5,7 +5,8 @@ public class MyBean {
 
     public void execute(){
         dep.foo(100);
-        dep.bar(101);
+        dep.foo(101);
+        dep.bar();
     }
 
     public void setDep(MyDependency dep) {
