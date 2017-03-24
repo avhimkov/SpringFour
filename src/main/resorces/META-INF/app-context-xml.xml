@@ -8,7 +8,7 @@
            http://www.springframework.org/schema/aop/spring-aop.xsd">
 
     <aop:config>
-        <aop:pointcut id="fooExecution" expression="execution(* ch5..foo*(int))"/>
+        <aop:pointcut id="fooExecution" expression="execution(* foo*(int)) and args(intValue) and bean(myDependency)"/>
         <aop:aspect ref="advice">
             <aop:before pointcut-ref="fooExecution" method="simpleBeforeAdvice"/>
         </aop:aspect>
