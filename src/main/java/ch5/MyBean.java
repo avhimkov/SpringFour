@@ -5,12 +5,12 @@ import org.springframework.stereotype.Component;
 
 @Component("myBean")
 public class MyBean {
-    private MyDependency dep;
+    private MyDependency myDependency;
 
     public void execute(){
-        dep.foo(100);
-        dep.foo(101);
-        dep.bar();
+        myDependency.foo(100);
+        myDependency.foo(101);
+        myDependency.bar();
     }
 
     @Autowired
