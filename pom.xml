@@ -20,6 +20,14 @@
         </plugins>
     </build>
 
+    <!--<root-node>-->
+        <!--<resource-ref>-->
+            <!--<res-ref-name>jdbc/prospring4ch6</res-ref-name>-->
+            <!--<res-type>javax.sql.DataSource</res-type>-->
+            <!--<res-auth>Container</res-auth>-->
+        <!--</resource-ref>-->
+    <!--</root-node>-->
+
     <properties>
         <spring.version>4.3.6.RELEASE</spring.version>
         <jdk.version>1.8</jdk.version>
