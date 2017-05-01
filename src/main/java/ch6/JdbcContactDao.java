@@ -2,7 +2,6 @@ package ch6;
 
 import org.springframework.beans.factory.BeanCreationException;
 import org.springframework.beans.factory.InitializingBean;
-import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate;
 
 import javax.sql.DataSource;
@@ -24,8 +23,7 @@ public class JdbcContactDao implements ContactDao, InitializingBean {
 
     public void setDataSource(DataSource dataSource){
         this.dataSource = dataSource;
-        NamedParameterJdbcTemplate         NamedParameterJdbcTemplate namedParameterJdbcTemplate = new NamedParameterJdbcTemplate(dataSource);
- = new NamedParameterJdbcTemplate(dataSource);
+        NamedParameterJdbcTemplate namedParameterJdbcTemplate = new NamedParameterJdbcTemplate(dataSource);
         this.namedParameterJdbcTemplate = namedParameterJdbcTemplate;
     }
 
