@@ -11,8 +11,8 @@ public class JdbcContactDaoSample {
         ctx.refresh();
 
         ContactDao contactDao = ctx.getBean("contactDao", ContactDao.class);
-        List<Contact> contacts = contactDao.findAll();
-        for (Contact contact : contacts){
+        List<Contact> contactsWithDetail = contactDao.findAllWithDetail();
+        for (Contact contact : contactsWithDetail){
             System.out.println(contact);
             if (contact.getContactTelDetails()!=null){
                 for (ContactTelDetail contactTelDetail:contact.getContactTelDetails()){
