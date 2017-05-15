@@ -9,9 +9,9 @@ import org.springframework.dao.DataAccessException;
 public class MySQLErrorCodesTranslator extends SQLErrorCodeSQLExceptionTranslator {
 
     @Override
-    protected DataAccessException costomTranslate(String task, String sql, SQLException sqlx){
-        if (sqlx.getErrorCode()==-12345){
-            return new DeadlockLoserDataAccessException(task, sqlx);
+    protected DataAccessException customTranslate(String task, String sql, SQLException sqlex){
+        if (sqlex.getErrorCode()== -12345){
+            return new DeadlockLoserDataAccessException(task, sqlex);
         }
         return null;
     }

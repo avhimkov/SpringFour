@@ -30,7 +30,17 @@ public class JdbcContactDao implements ContactDao {
     }
 
     @Override
+    public List<Contact> findAllWithDetail() {
+        return null;
+    }
+
+    @Override
     public void insert (Contact contact){
+    }
+
+    @Override
+    public void insertWithDetail(Contact contact) {
+
     }
 
     @Override

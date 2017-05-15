@@ -78,6 +78,10 @@ public class PlainContactDao implements ContactDao {
             }
         }
 
+    @Override
+    public void insertWithDetail(Contact contact) {
+
+    }
 
     @Override
     public void delete(Long contactId){
@@ -101,6 +105,11 @@ public class PlainContactDao implements ContactDao {
 
     @Override
     public String findFirstNameById(Long id){
+        return null;
+    }
+
+    @Override
+    public List<Contact> findAllWithDetail() {
         return null;
     }
 

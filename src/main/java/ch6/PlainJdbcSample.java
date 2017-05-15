@@ -33,7 +33,7 @@ public class PlainJdbcSample {
 
     private static void listAllContacts(){
         List<Contact> contacts = contactDao.findAll();
-        for (Contact contact:contacts){
+        for (Contact contact: contacts){
             System.out.println(contact);
         }
     }
