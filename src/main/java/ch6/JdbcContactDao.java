@@ -5,7 +5,9 @@ import org.apache.commons.logging.LogFactory;
 import org.springframework.stereotype.Repository;
 import javax.annotation.Resource;
 import javax.sql.DataSource;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 @Repository("contactDao")
 public class JdbcContactDao implements ContactDao {
@@ -13,6 +15,7 @@ public class JdbcContactDao implements ContactDao {
 
     private DataSource dataSource;
     private SelectAllContacts selectAllContacts;
+    private SelectContactByFirstName selectContactByFirstName;
 
     @Override
     public List<Contact> findAll(){
@@ -20,8 +23,10 @@ public class JdbcContactDao implements ContactDao {
     }
 
     @Override
-    public List<Contact> findByFirstName(String firstString){
-        return null;
+    public List<Contact> findByFirstName(String firstname){
+        Map<String, Object> paramMap = new HashMap<String, Object>();
+        paramMap.put("first_name", firstname);
+        return selectContactByFirstName.executeByNamedParam(paramMap);
     }
 
     @Override
@@ -45,6 +50,11 @@ public class JdbcContactDao implements ContactDao {
 
     @Override
     public void update(Contact contact){
+    }
+
+    @Override
+    public void delete(Long contactId) {
+
     }
 
     @Resource(name = "dataSource")
