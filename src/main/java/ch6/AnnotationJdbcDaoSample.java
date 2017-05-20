@@ -10,7 +10,7 @@ public class AnnotationJdbcDaoSample {
         ctx.refresh();
 
         ContactDao contactDao = ctx.getBean("contactDao", ContactDao.class);
-        List<Contact> contacts = contactDao.findAll();
+        List<Contact> contacts = contactDao.findByFirstName("Chris");
         listContacts(contacts);
     }
 
@@ -22,7 +22,7 @@ public class AnnotationJdbcDaoSample {
                     System.out.println("---" + contactTelDetail);
                 }
             }
-//            System.out.println();
+            System.out.println();
         }
     }
 }
