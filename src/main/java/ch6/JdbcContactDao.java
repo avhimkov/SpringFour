@@ -16,6 +16,7 @@ public class JdbcContactDao implements ContactDao {
     private DataSource dataSource;
     private SelectAllContacts selectAllContacts;
     private SelectContactByFirstName selectContactByFirstName;
+    private UpdateContact updateContact;
 
     @Override
     public List<Contact> findAll(){
@@ -50,6 +51,15 @@ public class JdbcContactDao implements ContactDao {
 
     @Override
     public void update(Contact contact){
+        Map<String, Object> paramMap = new HashMap<String, Object>();
+        paramMap.put("first_name", contact.getFirstName());
+        paramMap.put("last_name", contact.getLastName());
+        paramMap.put("birth_date", contact.getBirthDate());
+        paramMap.put("id", contact.getId());
+
+        updateContact.updateByNamedParam(paramMap);
+
+        LOG.info("Existing contact updated wi th id: " + contact.getId());
     }
 
     @Override
@@ -61,6 +71,8 @@ public class JdbcContactDao implements ContactDao {
     public void setDataSource(DataSource dataSource) {
         this.dataSource = dataSource;
         this.selectAllContacts = new SelectAllContacts(dataSource);
+        this.selectContactByFirstName = new SelectContactByFirstName(dataSource);
+        this.updateContact = new UpdateContact(dataSource);
     }
 
     public DataSource getDataSource() {
