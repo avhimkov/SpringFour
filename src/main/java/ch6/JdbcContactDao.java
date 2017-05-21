@@ -2,6 +2,8 @@ package ch6;
 
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
+import org.springframework.jdbc.support.GeneratedKeyHolder;
+import org.springframework.jdbc.support.KeyHolder;
 import org.springframework.stereotype.Repository;
 import javax.annotation.Resource;
 import javax.sql.DataSource;
@@ -17,6 +19,7 @@ public class JdbcContactDao implements ContactDao {
     private SelectAllContacts selectAllContacts;
     private SelectContactByFirstName selectContactByFirstName;
     private UpdateContact updateContact;
+    private InsertContact insertContact;
 
     @Override
     public List<Contact> findAll(){
@@ -42,6 +45,16 @@ public class JdbcContactDao implements ContactDao {
 
     @Override
     public void insert (Contact contact){
+        Map<String, Object> paramMap = new HashMap<String, Object>();
+        paramMap.put("first_name", contact.getFirstName());
+        paramMap.put("last_name", contact.getLastName());
+        paramMap.put("birth_date", contact.getBirthDate());
+
+        KeyHolder keyHolder = new GeneratedKeyHolder();
+        insertContact.updateByNamedParam(paramMap, keyHolder);
+        contact.setId(keyHolder.getKey().longValue());
+
+        LOG.info("New contact inserted with id: " + contact.getId());
     }
 
     @Override
@@ -73,6 +86,7 @@ public class JdbcContactDao implements ContactDao {
         this.selectAllContacts = new SelectAllContacts(dataSource);
         this.selectContactByFirstName = new SelectContactByFirstName(dataSource);
         this.updateContact = new UpdateContact(dataSource);
+        this.insertContact = new InsertContact(dataSource);
     }
 
     public DataSource getDataSource() {
