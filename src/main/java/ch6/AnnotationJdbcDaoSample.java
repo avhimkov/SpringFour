@@ -14,17 +14,16 @@ public class AnnotationJdbcDaoSample {
 
         ContactDao contactDao = ctx.getBean("contactDao", ContactDao.class);
         Contact contact = new Contact();
-        contact.getId(1l);
-        contact.getFirstName("Chris");
-        contact.getLastName("John");
-        contact.getLastName(new Date(new GregorianCalendar(1977, 10 ,1).getTime().getTime()));
-        contactDao.update(contact);
+        contact.setFirstName("Rod");
+        contact.setLastName("Johnson");
+        contact.setLastName(new Date(new GregorianCalendar(2001, 10 ,1).getTime().getTime()));
+        contactDao.insert(contact);
 
-        listContacts(contact.findAll());
+        listContacts(contactDao.findAll());
     }
 
     private static void listContacts(List<Contact> contacts){
-        for (Contact contact:contacts){
+        for (Contact contact: contacts){
             System.out.println(contact);
             if (contact.getContactTelDetails()!= null){
                 for (ContactTelDetail contactTelDetail:contact.getContactTelDetails()){
