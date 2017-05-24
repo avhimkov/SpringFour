@@ -27,6 +27,7 @@ public class JdbcContactDao implements ContactDao {
     private UpdateContact updateContact;
     private InsertContact insertContact;
     private InsertContactTelDetail insertContactTelDetail;
+    private StoredFunctionFirstNameById storedFunctionFirstNameById;
 
     @Override
     public List<Contact> findAll(){
@@ -42,7 +43,8 @@ public class JdbcContactDao implements ContactDao {
 
     @Override
     public String findFirstNameById(Long id){
-        return null;
+        List<String> result = storedFunctionFirstNameById.execute(id);
+        return result.get(0);
     }
 
     @Override
@@ -51,7 +53,7 @@ public class JdbcContactDao implements ContactDao {
         String sql = "select c.id, c.first_name, c.last_name, c.birth_date" +
                 ", t.id as contact_tel_id, t.tel_type, t.tel_number from contact c" +
                 "left join contact_tel_detail t on c.id = t.contact_id";
-        return jdbcTemplate.query(sql, new ContactTelDetailExtractor());
+        return jdbcTemplate.query(sql, new ContactWithDetailExtractor());
     }
 
     @Override
@@ -90,7 +92,6 @@ public class JdbcContactDao implements ContactDao {
                 paramMap.put("tel_type", contactTelDetail.getTelType());
                 paramMap.put("tel_number", contactTelDetail.getTelNumber());
                 insertContactTelDetail.updateByNamedParam(paramMap);
-
             }
         }
         insertContactTelDetail.flush();
@@ -121,13 +122,14 @@ public class JdbcContactDao implements ContactDao {
         this.selectContactByFirstName = new SelectContactByFirstName(dataSource);
         this.updateContact = new UpdateContact(dataSource);
         this.insertContact = new InsertContact(dataSource);
+        this.storedFunctionFirstNameById = new StoredFunctionFirstNameById(dataSource);
     }
 
     public DataSource getDataSource() {
         return dataSource;
     }
 
-    private static final class ContactTelDetailExtractor implements ResultSetExtractor<List<Contact>>{
+    private static final class ContactWithDetailExtractor implements ResultSetExtractor<List<Contact>>{
         @Override
         public List<Contact> extractData(ResultSet rs) throws SQLException, DataAccessException {
             Map<Long, Contact> map = new HashMap<Long, Contact>();
