@@ -16,7 +16,7 @@ public class PlainJdbcSample {
         Contact contact = new Contact();
         contact.setFirstName("Jacky");
         contact.setLastName("Chan");
-        contact.setBirthDate(new Date(new GregorianCalendar(2001, 10, 1).getTime()));
+//        contact.setBirthDate(new Date(new GregorianCalendar(2001, 10, 1).getTime()));
         contactDao.insert(contact);
 
         System.out.println("Listing contact data after new contact created:");

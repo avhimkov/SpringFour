@@ -53,7 +53,7 @@ public class JdbcContactDao implements ContactDao {
         String sql = "select c.id, c.first_name, c.last_name, c.birth_date" +
                 ", t.id as contact_tel_id, t.tel_type, t.tel_number from contact c" +
                 "left join contact_tel_detail t on c.id = t.contact_id";
-        return jdbcTemplate.query(sql, new ContactWithDetailExtractor());
+        return jdbcTemplate.query(sql, new ContactTelDetailExtractor());
     }
 
     @Override
@@ -129,7 +129,7 @@ public class JdbcContactDao implements ContactDao {
         return dataSource;
     }
 
-    private static final class ContactWithDetailExtractor implements ResultSetExtractor<List<Contact>>{
+    private static final class ContactTelDetailExtractor implements ResultSetExtractor<List<Contact>>{
         @Override
         public List<Contact> extractData(ResultSet rs) throws SQLException, DataAccessException {
             Map<Long, Contact> map = new HashMap<Long, Contact>();
