@@ -3,6 +3,9 @@ package ch7;
 import javax.persistence.*;
 import java.io.Serializable;
 import java.util.Date;
+import java.util.HashSet;
+import java.util.Set;
+
 import static javax.persistence.GenerationType.IDENTITY;
 
 @Entity
@@ -13,6 +16,7 @@ public class Contact implements Serializable{
     private String firstname;
     private String lastname;
     private Date birthDate;
+    private Set<ContactTelDetail> contactTelDetails = new HashSet<ContactTelDetail>();
 
     @Id
     @GeneratedValue(strategy = IDENTITY)
@@ -61,6 +65,26 @@ public class Contact implements Serializable{
 
     public void setBirthDate(Date birthDate) {
         this.birthDate = birthDate;
+    }
+
+    @OneToMany(mappedBy = "contact", cascade = CascadeType.ALL, orphanRemoval = true)
+    public Set<ContactTelDetail> getContactTelDetails() {
+        return this.contactTelDetails;
+    }
+
+    public void setContactTelDetails(Set<ContactTelDetail> contactTelDetails) {
+        this.contactTelDetails = contactTelDetails;
+    }
+
+    public void addContactTelDetail(ContactTelDetail contactTelDetail){
+        contactTelDetail.setContact(this);
+        getContactTelDetails().add(contactTelDetail);
+    }
+
+    @ManyToMany
+    @JoinTable(name = "contact_hobby_detail", inverseJoinColumns = @JoinColumn(name = "HOBBY_ID"))
+    public Set<Hobby> getHobbies(){
+        return this.hobbies;
     }
 
     public String toString(){
