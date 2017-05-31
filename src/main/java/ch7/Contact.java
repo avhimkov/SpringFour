@@ -17,6 +17,8 @@ public class Contact implements Serializable{
     private String lastname;
     private Date birthDate;
     private Set<ContactTelDetail> contactTelDetails = new HashSet<ContactTelDetail>();
+    private Set<Hobby> hobbies = new HashSet<Hobby>();
+
 
     @Id
     @GeneratedValue(strategy = IDENTITY)
@@ -76,15 +78,23 @@ public class Contact implements Serializable{
         this.contactTelDetails = contactTelDetails;
     }
 
+    public void removeContactTelDetail(ContactTelDetail contactTelDetail){
+        getContactTelDetails().remove(contactTelDetail);
+    }
+
     public void addContactTelDetail(ContactTelDetail contactTelDetail){
         contactTelDetail.setContact(this);
         getContactTelDetails().add(contactTelDetail);
     }
 
     @ManyToMany
-    @JoinTable(name = "contact_hobby_detail", inverseJoinColumns = @JoinColumn(name = "HOBBY_ID"))
+    @JoinTable(name = "contact_hobby_detail", joinColumns = @JoinColumn(name = "HOBBY_ID"))
     public Set<Hobby> getHobbies(){
         return this.hobbies;
+    }
+
+    public void setHobbies(Set<Hobby> hobbies){
+        this.hobbies = hobbies;
     }
 
     public String toString(){
