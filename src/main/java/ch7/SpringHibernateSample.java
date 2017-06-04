@@ -21,7 +21,16 @@ public class SpringHibernateSample {
 
         for (Contact contact: contacts){
             System.out.println(contact);
-            System.out.println();
+            if (contact.getContactTelDetails() != null){
+                for (ContactTelDetail contactTelDetail: contact.getContactTelDetails()){
+                    System.out.println(contactTelDetail);
+                }
+            }
+            if (contact.getHobbies()!=null){
+                for (Hobby hobby: contact.getHobbies())
+                System.out.println(hobby);
+            }
         }
+        System.out.println();
     }
 }

@@ -23,11 +23,11 @@ public class PlainContactDao implements ContactDao {
         if (connection == null);{
             return;
         }
-        try {
-            connection.close();
-        } catch (SQLException ex){
-            ex.printStackTrace();
-        }
+//        try {
+//            connection.close();
+//        } catch (SQLException ex){
+//            ex.printStackTrace();
+//        }
     }
     @Override
     public List<Contact> findAll(){
@@ -55,28 +55,28 @@ public class PlainContactDao implements ContactDao {
         return result;
     }
 
-    @Override
-    public void insert(Contact contact){
-        Connection connection = null;
-        try {
-            connection = getConnetction();
-            PreparedStatement statement = connection.prepareStatement("insert into Contact (first_name, last_name, birth_date) " +
-                    "values (?,?,?,)", Statement.RETURN_GENERATED_KEYS);
-            statement.setString(1, contact.getFirstName());
-            statement.setString(2, contact.getLastName());
-            statement.setDate(3, contact.getBirthDate());
-            statement.execute();
-            ResultSet generatedKeys = statement.getGeneratedKeys();
-            if (generatedKeys.next()) {
-                contact.setId(generatedKeys.getLong(1));
-            }
-
-            }catch (SQLException ex){
-                ex.printStackTrace();
-            }finally {
-                closeConnection(connection);
-            }
-        }
+//    @Override
+//    public void insert(Contact contact){
+//        Connection connection = null;
+//        try {
+//            connection = getConnetction();
+//            PreparedStatement statement = connection.prepareStatement("insert into Contact (first_name, last_name, birth_date) " +
+//                    "values (?,?,?,)", Statement.RETURN_GENERATED_KEYS);
+//            statement.setString(1, contact.getFirstName());
+//            statement.setString(2, contact.getLastName());
+//            statement.setDate(3, contact.getBirthDate());
+//            statement.execute();
+//            ResultSet generatedKeys = statement.getGeneratedKeys();
+//            if (generatedKeys.next()) {
+//                contact.setId(generatedKeys.getLong(1));
+//            }
+//
+//            }catch (SQLException ex){
+//                ex.printStackTrace();
+//            }finally {
+//                closeConnection(connection);
+//            }
+//        }
 
     @Override
     public void insertWithDetail(Contact contact) {
@@ -114,9 +114,14 @@ public class PlainContactDao implements ContactDao {
     }
 
     @Override
-    public String findLastNameById(Long id){
-        return null;
+    public void insert(Contact contact) {
+
     }
+
+//    @Override
+//    public String findLastNameById(Long id){
+//        return null;
+//    }
 
     @Override
     public void update(Contact contact){
