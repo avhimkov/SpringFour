@@ -10,6 +10,9 @@ import static javax.persistence.GenerationType.IDENTITY;
 
 @Entity
 @Table(name = "contact")
+@NamedQueries({@NamedQuery(name = "Contact.findAllWithDetail",
+        query = "select distinct c from Contact c left join fetch c.contactTelDetails " +
+                "t left  join  fetch c.hobbies h")})
 public class Contact implements Serializable{
     private Long id;
     private int version;
@@ -88,7 +91,9 @@ public class Contact implements Serializable{
     }
 
     @ManyToMany
-    @JoinTable(name = "contact_hobby_detail", joinColumns = @JoinColumn(name = "HOBBY_ID"))
+    @JoinTable(name = "contact_hobby_detail", joinColumns = @JoinColumn(name = "CONTACT_ID"),
+    inverseJoinColumns = @JoinColumn(name = "HOBBY_ID"))
+
     public Set<Hobby> getHobbies(){
         return this.hobbies;
     }
