@@ -15,15 +15,6 @@ public class ContactDaoImpl implements ContactDao {
 
     private SessionFactory sessionFactory;
 
-    public SessionFactory getSessionFactory() {
-        return sessionFactory;
-    }
-
-    @Resource(name = "sessionFactory")
-    public void setSessionFactory(SessionFactory sessionFactory) {
-        this.sessionFactory = sessionFactory;
-    }
-
     @Override
     @Transactional(readOnly = true)
     public List<Contact> findAll() {
@@ -32,7 +23,7 @@ public class ContactDaoImpl implements ContactDao {
 
     @Override
     public List<Contact> findAllWithDetail() {
-        return null;
+        return sessionFactory.getCurrentSession().getNamedQuery("Contact.findAllWithDetail").list();
     }
 
     @Override
@@ -46,7 +37,14 @@ public class ContactDaoImpl implements ContactDao {
     }
 
     @Override
-    public void delete(Contact contact) {
+    public void delete(Contact contact) {}
 
+    public SessionFactory getSessionFactory() {
+        return sessionFactory;
+    }
+
+    @Resource(name = "sessionFactory")
+    public void setSessionFactory(SessionFactory sessionFactory) {
+        this.sessionFactory = sessionFactory;
     }
 }
