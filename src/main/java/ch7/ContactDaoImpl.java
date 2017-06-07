@@ -27,8 +27,9 @@ public class ContactDaoImpl implements ContactDao {
     }
 
     @Override
+    @Transactional(readOnly = true)
     public Contact findById(Long id) {
-        return null;
+        return (Contact) sessionFactory.getCurrentSession().getNamedQuery("Contac.findById").setParameter("id", id).uniqueResult();
     }
 
     @Override
