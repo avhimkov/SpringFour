@@ -12,7 +12,8 @@ import static javax.persistence.GenerationType.IDENTITY;
 @Table(name = "contact")
 @NamedQueries({@NamedQuery(name = "Contact.findAllWithDetail",
         query = "select distinct c from Contact c left join fetch c.contactTelDetails " +
-                "t left  join  fetch c.hobbies h")})
+                "t left  join  fetch c.hobbies h where c.id = :id"),
+        @NamedQuery(name = "Contact.findAllWithDetail", query = "select distinct c from Contact c left join fetch c.contatcTelDetails t left join fetch c.hobbies h")})
 public class Contact implements Serializable{
     private Long id;
     private int version;
@@ -21,7 +22,6 @@ public class Contact implements Serializable{
     private Date birthDate;
     private Set<ContactTelDetail> contactTelDetails = new HashSet<ContactTelDetail>();
     private Set<Hobby> hobbies = new HashSet<Hobby>();
-
 
     @Id
     @GeneratedValue(strategy = IDENTITY)
