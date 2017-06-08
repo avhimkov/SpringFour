@@ -15,21 +15,22 @@ public class SpringHibernateSample {
         ContactDao contactDao = ctx.getBean("contactDao", ContactDao.class);
 
         Contact contact = contactDao.findById(1l);
-        contact.setFirstName("Kim Fung");
-        Set<ContactTelDetail> contactTels = contact.getContactTelDetails();
+        contactDao.delete(contact);
+//        contact.setFirstName("Kim Fung");
+//        Set<ContactTelDetail> contactTels = contact.getContactTelDetails();
+//
+//        ContactTelDetail toDeleteContactTel = null;
+//
+//        for (ContactTelDetail contactTel: contactTels){
+//            if (contactTel.getTelType().equals("Home")){
+//                toDeleteContactTel = contactTel;
+//            }
+//        }
+//
+//        contact.removeContactTelDetail(toDeleteContactTel);
+//        contactDao.save(contact);
 
-        ContactTelDetail toDeleteContactTel = null;
-
-        for (ContactTelDetail contactTel: contactTels){
-            if (contactTel.getTelType().equals("Home")){
-                toDeleteContactTel = contactTel;
-            }
-        }
-
-        contact.removeContactTelDetail(toDeleteContactTel);
-        contactDao.save(contact);
-
-        listContactsWithDetail(contactDao.findAll());
+        listContactsWithDetail(contactDao.findAllWithDetail());
     }
 
     public static void listContactsWithDetail (List<Contact> contacts){
