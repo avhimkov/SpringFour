@@ -40,7 +40,10 @@ public class ContactDaoImpl implements ContactDao {
     }
 
     @Override
-    public void delete(Contact contact) {}
+    public void delete(Contact contact) {
+        sessionFactory.getCurrentSession().delete(contact);
+        LOG.info("Contact deleted with id: " + contact.getId());
+    }
 
     public SessionFactory getSessionFactory() {
         return sessionFactory;
