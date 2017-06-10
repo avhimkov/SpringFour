@@ -1,5 +1,7 @@
 package ch8;
 
+import java.util.List;
+
 public interface ContactService {
     List<Contact> findAll();
     List<Contact> findAllWithDetail();
