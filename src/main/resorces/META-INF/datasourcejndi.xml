@@ -5,5 +5,5 @@
        xsi:schemaLocation="http://www.springframework.org/schema/beans
         http://www.springframework.org/schema/beans/spring-beans.xsd">
     <bean id="dataSource" class="org.springframework.jndi.JndiObjectFactoryBean"
-      p:jndiName="java:comp/env/jdbc/prospring4ch6"/>
+      p:jndiName="java:comp/env/jdbc/ch6"/>
 </beans>

@@ -12,6 +12,6 @@
         p:driverClassName="${jdbc.driverClassName}"
         p:url="${jdbc.url}"
         p:username="${jdbc.username}"
-        p:username="${jdbc.password}"/>
+        p:password="${jdbc.password}"/>
     <context:property-placeholder location="classpath:META-INF/config/jdbc.properties"/>
 </beans>
