@@ -48,20 +48,20 @@ public class Contact implements Serializable {
 
     @Column(name = "FIRST_NAME")
     public String getFirstname() {
-        return firstname;
+        return firstName;
     }
 
     public void setFirstName(String firstname) {
-        this.firstname = firstname;
+        this.firstName = firstname;
     }
 
     @Column(name = "LAST_NAME")
     public String getLastname() {
-        return lastname;
+        return lastName;
     }
 
     public void setLastName(String lastname) {
-        this.lastname = lastname;
+        this.lastName = lastname;
     }
 
     @Temporal(TemporalType.DATE)
@@ -105,7 +105,7 @@ public class Contact implements Serializable {
     }
 
     public String toString(){
-        return "Contact - Id: " + id + ", First name: " + firstname + ", Last name: " +
-                lastname + ", Birthday: " + birthDate;
+        return "Contact - Id: " + id + ", First name: " + firstName + ", Last name: " +
+                lastName + ", Birthday: " + birthDate;
     }
 }

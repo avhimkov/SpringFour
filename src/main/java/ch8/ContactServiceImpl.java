@@ -18,8 +18,10 @@ public class ContactServiceImpl implements ContactService{
     @PersistenceContext
     private EntityManager em;
 
+    @Transactional(readOnly = true)
     @Override
     public List<Contact> findAll() {
+        List<Contact> contacts = em.createNamedQuery("Contact.findAll", Contact.class).getResultList();
         return null;
     }
 
