@@ -31,7 +31,7 @@ public class ContactServiceImpl implements ContactService{
     }
 
     @Override
-    public Contact findByid(Long id) {
+    public Contact findById(Long id) {
         return null;
     }
 
