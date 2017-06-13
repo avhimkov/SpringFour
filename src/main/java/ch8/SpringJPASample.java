@@ -11,16 +11,26 @@ public class SpringJPASample {
         ctx.refresh();
 
         ContactService contactService = ctx.getBean("jpaContactService", ContactService.class);
-
-        listContacts(contactService.findAll());
+        List<Contact> contacts = contactService.findAllWithDetail();
+        listContactsWithDetail(contacts);
     }
 
-    public static void listContacts (List<Contact> contacts){
+    public static void listContactsWithDetail (List<Contact> contacts){
         System.out.println("");
         System.out.println("List contacts with details:");
 
         for (Contact contact: contacts){
             System.out.println(contact);
+            if (contact.getContactTelDetails()!=null){
+                for (ContactTelDetail contactTelDetail: contact.addContactTelDetail()){
+                    System.out.println(contactTelDetail);
+                }
+            }
+            if (contact.getHobbies()!=null){
+                for (Hobby hobby:contact.getHobbies()){
+                    System.out.println(hobby);
+                }
+            }
             System.out.println();
         }
     }
