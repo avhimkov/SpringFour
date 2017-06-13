@@ -8,6 +8,8 @@ import org.springframework.transaction.annotation.Transactional;
 import javax.annotation.Resource;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import javax.persistence.TypedQuery;
+import java.lang.reflect.Type;
 import java.util.List;
 
 @Service("jpaContactService")
@@ -25,15 +27,20 @@ public class ContactServiceImpl implements ContactService{
         return null;
     }
 
+    @Transactional(readOnly = true)
     @Override
     public List<Contact> findAllWithDetail() {
         List<Contact> contacts = em.createNamedQuery("Contact.findAllWithDetail", Contact.class).getResultList();
         return contacts;
     }
 
+    @Transactional(readOnly = true)
     @Override
     public Contact findById(Long id) {
-        return null;
+        TypedQuery<Contact> query = em.createNamedQuery("Contatc.findById", Contact.class);
+        query.setParameter("id", id);
+        return query.getSingleResult();
+
     }
 
     @Override

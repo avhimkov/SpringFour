@@ -22,7 +22,7 @@ public class SpringJPASample {
         for (Contact contact: contacts){
             System.out.println(contact);
             if (contact.getContactTelDetails()!=null){
-                for (ContactTelDetail contactTelDetail: contact.addContactTelDetail()){
+                for (ContactTelDetail contactTelDetail: contact.getContactTelDetails()){
                     System.out.println(contactTelDetail);
                 }
             }
