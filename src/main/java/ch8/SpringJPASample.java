@@ -10,28 +10,31 @@ public class SpringJPASample {
         ctx.load("classpath:META-INF/app-context-annotation.xml");
         ctx.refresh();
 
-        ContactService contactService = ctx.getBean("jpaContactService", ContactService.class);
-        List<Contact> contacts = contactService.findAllWithDetail();
-        listContactsWithDetail(contacts);
+        ContactSummaryUntypeImpl contactSummaryUntype = ctx.getBean("contactSummaryUntype", ContactSummaryUntypeImpl.class);
+        contactSummaryUntype.displayAllContactSummary();
+
+//        ContactService contactService = ctx.getBean("jpaContactService", ContactService.class);
+//        List<Contact> contacts = contactService.findAllWithDetail();
+//        listContactsWithDetail(contacts);
     }
 
-    public static void listContactsWithDetail (List<Contact> contacts){
-        System.out.println("");
-        System.out.println("List contacts with details:");
-
-        for (Contact contact: contacts){
-            System.out.println(contact);
-            if (contact.getContactTelDetails()!=null){
-                for (ContactTelDetail contactTelDetail: contact.getContactTelDetails()){
-                    System.out.println(contactTelDetail);
-                }
-            }
-            if (contact.getHobbies()!=null){
-                for (Hobby hobby:contact.getHobbies()){
-                    System.out.println(hobby);
-                }
-            }
-            System.out.println();
-        }
-    }
+//    public static void listContactsWithDetail (List<Contact> contacts){
+//        System.out.println("");
+//        System.out.println("List contacts with details:");
+//
+//        for (Contact contact: contacts){
+//            System.out.println(contact);
+//            if (contact.getContactTelDetails()!=null){
+//                for (ContactTelDetail contactTelDetail: contact.getContactTelDetails()){
+//                    System.out.println(contactTelDetail);
+//                }
+//            }
+//            if (contact.getHobbies()!=null){
+//                for (Hobby hobby:contact.getHobbies()){
+//                    System.out.println(hobby);
+//                }
+//            }
+//            System.out.println();
+//        }
+//    }
 }
