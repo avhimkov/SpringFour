@@ -2,6 +2,7 @@ package ch8;
 
 import org.springframework.context.support.GenericXmlApplicationContext;
 
+import java.util.Date;
 import java.util.List;
 
 public class SpringJPASample {
@@ -10,34 +11,37 @@ public class SpringJPASample {
         ctx.load("classpath:META-INF/app-context-annotation.xml");
         ctx.refresh();
 
-        ContactSummaryService contactSummaryService = ctx.getBean("contactSummaryService", ContactSummaryService.class);
-        List<ContactSummary> contacts = contactSummaryService.findAll();
-        for (ContactSummary contactSummary: contacts){
-            System.out.println(contactSummary);
-        }
+        ContactService contactService = ctx.getBean("jpaContactService", ContactService.class);
+        Contact contact = new Contact();
+        contact.setFirstName("Michael");
+        contact.setLastName("Jackson");
+        contact.setBirthDate(new Date());
 
-//        ContactService contactService = ctx.getBean("jpaContactService", ContactService.class);
-//        List<Contact> contacts = contactService.findAllWithDetail();
-//        listContactsWithDetail(contacts);
+        ContactTelDetail contactTelDetail = new ContactTelDetail("Home", "1111111111");
+        contact.addContactTelDetail(contactTelDetail);
+        contactTelDetail = new ContactTelDetail("Mobile", "2222222222");
+        contact.addContactTelDetail(contactTelDetail);
+        contactService.save(contact);
+        listContactsWithDetail(contactService.findAllWithDetail());
     }
 
-//    public static void listContactsWithDetail (List<Contact> contacts){
-//        System.out.println("");
-//        System.out.println("List contacts with details:");
-//
-//        for (Contact contact: contacts){
-//            System.out.println(contact);
-//            if (contact.getContactTelDetails()!=null){
-//                for (ContactTelDetail contactTelDetail: contact.getContactTelDetails()){
-//                    System.out.println(contactTelDetail);
-//                }
-//            }
-//            if (contact.getHobbies()!=null){
-//                for (Hobby hobby:contact.getHobbies()){
-//                    System.out.println(hobby);
-//                }
-//            }
-//            System.out.println();
-//        }
-//    }
+    public static void listContactsWithDetail (List<Contact> contacts){
+        System.out.println("");
+        System.out.println("List contacts with details:");
+
+        for (Contact contact: contacts){
+            System.out.println(contact);
+            if (contact.getContactTelDetails()!=null){
+                for (ContactTelDetail contactTelDetail: contact.getContactTelDetails()){
+                    System.out.println(contactTelDetail);
+                }
+            }
+            if (contact.getHobbies()!=null){
+                for (Hobby hobby:contact.getHobbies()){
+                    System.out.println(hobby);
+                }
+            }
+            System.out.println();
+        }
+    }
 }
