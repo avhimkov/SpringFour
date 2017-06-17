@@ -14,24 +14,8 @@ public class SpringJPASample {
 
         ContactService contactService = ctx.getBean("jpaContactService", ContactService.class);
         Contact contact = contactService.findById(1l);
-        System.out.println("");
+        contactService.delete(contact);
 
-        System.out.println("Contact with id 1:" + contact);
-
-        System.out.println("");
-
-        contact.setFirstName("Justin");
-
-        Set<ContactTelDetail> contactTels = contact.getContactTelDetails();
-        ContactTelDetail toDeleteContactTel = null;
-        for (ContactTelDetail contactTel: contactTels){
-            if (contactTel.getTelType().equals("Home")){
-                toDeleteContactTel = contactTel;
-            }
-        }
-
-        contactTels.remove(toDeleteContactTel);
-        contactService.save(contact);
         listContactsWithDetail(contactService.findAllWithDetail());
 
 //        contact.setLastName("Jackson");
