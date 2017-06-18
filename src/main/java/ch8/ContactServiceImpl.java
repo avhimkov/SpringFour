@@ -9,7 +9,6 @@ import javax.annotation.Resource;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.TypedQuery;
-import java.lang.reflect.Type;
 import java.util.List;
 
 @Service("jpaContactService")
