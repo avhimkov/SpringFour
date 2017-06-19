@@ -15,7 +15,7 @@ import java.util.List;
 @Service("jpaContactService")
 @Resource
 @Transactional
-public class ContactServiceImpl implements ContactService{
+public class ContactServiceImpl implements ContactService {
     final static String ALL_CONTACT_NATIVE_QUERY = "select id, first_name, last_name, birth_date, version from contact";
     private Log log = LogFactory.getLog(ContactServiceImpl.class);
     @PersistenceContext
@@ -46,7 +46,7 @@ public class ContactServiceImpl implements ContactService{
 
     @Override
     public Contact save(Contact contact) {
-        if (contact.getId()==null){
+        if (contact.getId() == null) {
             log.info("Inserting new contact");
             em.persist(contact);
         } else {
@@ -83,11 +83,11 @@ public class ContactServiceImpl implements ContactService{
         criteriaQuery.select(contactRoot).distinct(true);
         Predicate criteria = cb.conjunction();
 
-        if (firstName != null){
+        if (firstName != null) {
             Predicate p = cb.equal(contactRoot.get(Contact_.firstName), firstName);
             criteria = cb.and(criteria, p);
         }
-        if (lastName != null){
+        if (lastName != null) {
             Predicate p = cb.equal(contactRoot.get(Contact_.lastName), lastName);
             criteria = cb.and(criteria, p);
         }

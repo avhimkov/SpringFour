@@ -13,11 +13,8 @@ public class SpringJPASample {
         ctx.refresh();
 
         ContactService contactService = ctx.getBean("jpaContactService", ContactService.class);
-        Contact contact = contactService.findById(1l);
-        contactService.delete(contact);
-
-        listContactsWithDetail(contactService.findAllWithDetail());
-
+        List<Contact> contacts = contactService.findByCriteriaQuery("John","Smith");
+        listContactsWithDetail(contacts);
 //        contact.setLastName("Jackson");
 //        contact.setBirthDate(new Date());
 
