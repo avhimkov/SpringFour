@@ -12,36 +12,18 @@ public class SpringJPASample {
         ctx.load("classpath:META-INF/app-context-annotation.xml");
         ctx.refresh();
 
-        ContactService contactService = ctx.getBean("jpaContactService", ContactService.class);
-//        List<Contact> contacts = contactService.findByCriteriaQuery("John","Smith");
-//        listContactsWithDetail(contacts);
-//        contact.setLastName("Jackson");
-//        contact.setBirthDate(new Date());
-
-//        ContactTelDetail contactTelDetail = new ContactTelDetail("Home", "1111111111");
-//        contact.addContactTelDetail(contactTelDetail);
-//        contactTelDetail = new ContactTelDetail("Mobile", "2222222222");
-//        contact.addContactTelDetail(contactTelDetail);
-//        contactService.save(contact);
-//        listContactsWithDetail(contactService.findAllWithDetail());
+        ContactService contactService = ctx.getBean("springJpaContactService", ContactService.class);
+        listContacts("Find all:", contactService.findAll());
+        listContacts("Find by first name:", contactService.findByFirstName("Chris"));
+        listContacts("Find by first name and last name:", contactService.findByFirstNameAndLastName("Chris", "Schaefer"));
     }
 
-    public static void listContactsWithDetail (List<Contact> contacts){
+    public static void listContacts (String message, List<Contact> contacts){
         System.out.println("");
-        System.out.println("List contacts with details:");
+        System.out.println(message);
 
         for (Contact contact: contacts){
             System.out.println(contact);
-            if (contact.getContactTelDetails()!=null){
-                for (ContactTelDetail contactTelDetail: contact.getContactTelDetails()){
-                    System.out.println(contactTelDetail);
-                }
-            }
-            if (contact.getHobbies()!=null){
-                for (Hobby hobby:contact.getHobbies()){
-                    System.out.println(hobby);
-                }
-            }
             System.out.println();
         }
     }
