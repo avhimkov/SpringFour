@@ -8,7 +8,7 @@ public interface Auditable <U, ID extends Serializable> extends Persistable<ID>{
     U getCreatedBy();
     void setCreateBy(final  U createBy);
     DateTime getCreatedData();
-    void  setCreated(final DateTime creationDate);
+    void setCreatedDate(final DateTime creationDate);
     U getLastModifiedBy();
     void setLastModifiedBy(final U lastModifiedBy);
     DateTime getLastModifiedDate();
