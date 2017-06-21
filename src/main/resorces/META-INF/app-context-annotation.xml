@@ -22,8 +22,7 @@
     <bean id="transactionManager"
           class="org.springframework.orm.jpa.JpaTransactionManager">
         <property name = "entityManagerFactory" ref="emf"/>
-    </bean>Глава 8. Доступ к данным в Spring с использованием JPA 2
-    437
+    </bean>
     <tx:annotation-driven transaction-manager = "transactionManager" />
     <bean id="emf"
           class = "org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean">

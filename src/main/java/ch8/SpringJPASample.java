@@ -12,17 +12,34 @@ public class SpringJPASample {
         ctx.load("classpath:META-INF/app-context-annotation.xml");
         ctx.refresh();
 
-        ContactService contactService = ctx.getBean("springJpaContactService", ContactService.class);
-        listContacts("Find all:", contactService.findAll());
-        listContacts("Find by first name:", contactService.findByFirstName("Chris"));
-        listContacts("Find by first name and last name:", contactService.findByFirstNameAndLastName("Chris", "Schaefer"));
+        ContactAuditService contactService = ctx.getBean("contactAuditService", ContactAuditService.class);
+        List<ContactAudit> contacts = contactService.findAll();
+        listContacts(contacts);
+
+        System.out.println ("Add new contact");
+        ContactAudit contact = new ContactAudit();
+        contact.setFirstName("Мichael");
+        contact.setLastName("Jackson");
+        contact.setBirthDate(new Date());
+        contactService.save(contact);
+        contacts = contactService.findAll();
+        listContacts(contacts);
+        contact = contactService.findById(1l);
+        System.out.println("");
+        System.out.println("Contact with id 1:" + contact);
+        System.out.println("");
+        System.out.println("Update contact");
+        contact.setFirstName("Tom");
+        contactService.save(contact);
+        contacts = contactService.findAll();
+        listContacts(contacts);
     }
 
-    public static void listContacts (String message, List<Contact> contacts){
+    public static void listContacts (List<ContactAudit> contacts){
         System.out.println("");
-        System.out.println(message);
+        System.out.println("Listing contacts without details:");
 
-        for (Contact contact: contacts){
+        for (ContactAudit contact: contacts){
             System.out.println(contact);
             System.out.println();
         }
