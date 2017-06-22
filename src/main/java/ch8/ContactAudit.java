@@ -8,8 +8,11 @@ import org.joda.time.DateTime;
 import javax.persistence.*;
 import java.io.Serializable;
 import java.util.Date;
+import org.springframework.data.domain.Auditable;
+import org.hibernate.envers.Audited;
 
 @Entity
+@Audited
 @Table(name = "contact_audit")
 public class ContactAudit implements Auditable<String, Long>, Serializable{
     private Long id;
