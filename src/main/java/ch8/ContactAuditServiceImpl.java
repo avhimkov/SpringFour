@@ -19,6 +19,9 @@ public class ContactAuditServiceImpl implements ContactAuditService{
     @Autowired
     private ContactAuditRepository contactAuditRepository;
 
+    @PersistenceContext
+    private EntityManager entityManager;
+
     @Transactional(readOnly = true)
     public List<ContactAudit> findAll() {
         return Lists.newArrayList(contactAuditRepository.findAll());
