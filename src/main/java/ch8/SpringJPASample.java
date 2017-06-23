@@ -22,17 +22,22 @@ public class SpringJPASample {
         contact.setLastName("Jackson");
         contact.setBirthDate(new Date());
         contactService.save(contact);
-        contacts = contactService.findAll();
-        listContacts(contacts);
-        contact = contactService.findById(1l);
-        System.out.println("");
-        System.out.println("Contact with id 1:" + contact);
-        System.out.println("");
+        listContacts(contactService.findAll());
         System.out.println("Update contact");
         contact.setFirstName("Tom");
         contactService.save(contact);
-        contacts = contactService.findAll();
-        listContacts(contacts);
+        listContacts(contactService.findAll());
+
+        ContactAudit oldContact = contactService.findAuditByRevision(1l, 1);
+        System.out.println("");
+        System.out.println("Old Contact with id 1 and rev 1:" + oldContact);
+        System.out.println("");
+        oldContact = contactService.findAuditByRevision(1l, 2);
+
+        System.out.println("");
+        System.out.println("Old Contact with id 1 and rev 2:" + oldContact);
+        System.out.println("");
+
     }
 
     public static void listContacts (List<ContactAudit> contacts){
