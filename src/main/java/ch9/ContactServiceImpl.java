@@ -19,22 +19,23 @@ public class ContactServiceImpl implements ContactService{
         return Lists.newArrayList(contactRepository.findAll());
     }
 
-    public void setContactRepository(ContactRepository contactRepository) {
-        this.contactRepository = contactRepository;
-    }
-
     @Override
-    public Contact finddById(Long id) {
-        return null;
+    @Transactional(readOnly = true)
+    public Contact findById(Long id) {
+        return contactRepository.findOne(id);
     }
 
     @Override
     public Contact save(Contact contact) {
-        return null;
+        return contactRepository.save(contact);
     }
 
     @Override
     public long contactAll() {
         return 0;
+    }
+
+    public void setContactRepository(ContactRepository contactRepository) {
+        this.contactRepository = contactRepository;
     }
 }

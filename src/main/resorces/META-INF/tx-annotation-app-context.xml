@@ -24,6 +24,7 @@
         <property name="entityManagerFactory" ref="emf" />
     </bean>
     <tx:annotation-driven/>
+
     <bean id="emf"
           class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean">
         <property name="dataSource" ref="dataSource" />
@@ -45,8 +46,8 @@
         </property>
     </bean>
     <context:component-scan
-            base-package="ch9" />
+      base-package="ch9" />
     <jpa:repositories base-package="ch9"
-                      entity-manager-factory-ref="emf"
-                      transaction-manager-ref="transactionManager"/>
+      entity-manager-factory-ref="emf"
+      transaction-manager-ref="transactionManager"/>
 </beans>

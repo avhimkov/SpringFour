@@ -7,7 +7,7 @@ import java.util.List;
 public class TxAnnotationSample {
     public static void main(String[] args) {
         GenericXmlApplicationContext ctx = new GenericXmlApplicationContext();
-        ctx.load("classpath:META-INF/tx-app-context-annotation.xml");
+        ctx.load("classpath:META-INF/tx-annotation-app-context.xml");
         ctx.refresh();
         ContactService contactService = ctx.getBean("contactService", ContactService.class);
 
