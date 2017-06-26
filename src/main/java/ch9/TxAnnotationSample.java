@@ -15,5 +15,10 @@ public class TxAnnotationSample {
         for (Contact contactTemp: contacts){
             System.out.println(contactTemp);
         }
+        Contact contact = contactService.findById(1L);
+        contact.setFirstName("Peter");
+        contactService.save(contact);
+        System.out.println("Contact saved successfully: " + contact);
+
     }
 }
