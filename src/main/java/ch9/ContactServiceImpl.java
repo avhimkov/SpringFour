@@ -31,8 +31,9 @@ public class ContactServiceImpl implements ContactService{
     }
 
     @Override
-    public long contactAll() {
-        return 0;
+    @Transactional(readOnly = true)
+    public long countAll() {
+        return contactRepository.countAllContacts();
     }
 
     public void setContactRepository(ContactRepository contactRepository) {
