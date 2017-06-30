@@ -23,7 +23,7 @@
     <bean id="chris" class="ch10.Contact"
           p:firstName="Chris"
           p:lastName="Schaefer"
-          p:birthDate="l981-05-03"
+          p:birthDate="l981-5-03"
           p:personalSite="http://www.dtzq.com"/>
     <bean id="myContact" class="ch10.Contact"
           p:firstName="${myContact.firstName}"
