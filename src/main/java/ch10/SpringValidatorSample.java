@@ -17,9 +17,9 @@ public class SpringValidatorSample {
         Contact contact = new Contact();
         contact.setFirstName(null);
         contact.setLastName("Schaefer");
-        Validator contatcValidator = ctx.getBean("contactValidator", Validator.class);
+        Validator contactValidator = ctx.getBean("contactValidator", Validator.class);
         BeanPropertyBindingResult result = new BeanPropertyBindingResult(contact, "Chris");
-        ValidationUtils.invokeValidator(contatcValidator, contact, result);
+        ValidationUtils.invokeValidator(contactValidator, contact, result);
         List<ObjectError> errors = result.getAllErrors();
         System.out.println("No of validation errors:" + errors.size());
         for (ObjectError error: errors){
