@@ -19,7 +19,7 @@ public class Customer {
         return firstName;
     }
 
-    public void setFirstName(String firstName) {
+    public static void setFirstName(String firstName) {
         this.firstName = firstName;
     }
 
@@ -27,7 +27,7 @@ public class Customer {
         return lastName;
     }
 
-    public void setLastName(String lastName) {
+    public static void setLastName(String lastName) {
         this.lastName = lastName;
     }
 
@@ -35,7 +35,7 @@ public class Customer {
         return customerType;
     }
 
-    public void setCustomerType(CustomerType customerType) {
+    public static void setCustomerType(CustomerType customerType) {
         this.customerType = customerType;
     }
 
@@ -43,7 +43,7 @@ public class Customer {
         return gender;
     }
 
-    public void setGender(Gender gender) {
+    public static void setGender(Gender gender) {
         this.gender = gender;
     }
 
