@@ -1,5 +1,6 @@
 package ch10;
 
+import javax.validation.constraints.AssertTrue;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
@@ -48,7 +49,14 @@ public class Customer {
         this.gender = gender;
     }
 
+    @AssertTrue(message = "ERROR ! Individual customer should have gender and\n" +
+            "last name defined")
     public boolean isIndividualCustomer(){
-        return this.customerType.equals(CustomerType.INDIVIDUAL);
+        boolean result = true;
+        if (getCustomerType() != null && (this.customerType.equals(CustomerType.INDIVIDUAL)
+        && (gender == null || lastName == null))){
+            result = false;
+        }
+        return result;
     }
 }
