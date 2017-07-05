@@ -49,12 +49,17 @@ public class Customer {
         this.gender = gender;
     }
 
+
+    public boolean isIndividualCustomer(){
+        return this.customerType.equals(CustomerType.INDIVIDUAL);
+    }
+
     @AssertTrue(message = "ERROR ! Individual customer should have gender and\n" +
             "last name defined")
-    public boolean isIndividualCustomer(){
+    public boolean isValidIndividualCustomer(){
         boolean result = true;
         if (getCustomerType() != null && (this.customerType.equals(CustomerType.INDIVIDUAL)
-        && (gender == null || lastName == null))){
+                && (gender == null || lastName == null))){
             result = false;
         }
         return result;
