@@ -32,8 +32,8 @@
     </tx:advice>
 
     <jdbc:embedded-database id="dataSource" type="H2">
-        <jdbc:script location="classpath:META-INF/sql/schema.sql"/>
-        <jdbc:script location="classpath:META-INF/sql/test-data.sql"/>
+        <jdbc:script location="classpath:META-INF/config/schema.sql"/>
+        <jdbc:script location="classpath:META-INF/config/test-data.sql"/>
     </jdbc:embedded-database>
 
     <bean id="transactionManager"
