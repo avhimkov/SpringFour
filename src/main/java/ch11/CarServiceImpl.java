@@ -6,6 +6,7 @@ import org.joda.time.Years;
 import org.slf4j.LoggerFactory;
 import org.slf4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Repository;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -32,7 +33,7 @@ public class CarServiceImpl implements CarService {
         return carRepository.save(car);
     }
 
-    @Override
+    @Scheduled(fixedDelay=10000)
     public void updateCarAgeJob() {
         List<Car> cars = findAll();
 
