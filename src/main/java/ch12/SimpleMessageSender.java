@@ -15,6 +15,7 @@ public class SimpleMessageSender implements MessageSender {
     private JmsTemplate jmsTemplate;
     @Override
     public void sendMessage(final String message) {
+        jmsTemplate.setDeliveryDelay(5000L);
         this.jmsTemplate.send(new MessageCreator() {
             @Override
             public Message createMessage(Session session) throws JMSException {
