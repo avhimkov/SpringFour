@@ -2,19 +2,33 @@
 <beans xmlns="http://www.springframework.org/schema/beans"
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
        xmlns:jms="http://www.springframework.org/schema/jms"
-       xmlns:p="http://www.springframework.org/schema/p"
        xsi:schemaLocation="http://www.springframework.org/schema/beans
        http://www.springframework.org/schema/beans/spring-beans.xsd
        http://www.springframework.org/schema/jms
        http://www.springframework.org/schema/jms/spring-jms.xsd">
     <bean id="connectionFactory"
-          class="org.apache.activemq.ActiveMQConnectionFactory"
-          p:brokerURL="tcp://localhost:61616" />
+          class="org.hornetq.jms.client.HornetQJMSConnectionFactory">
+        <constructor-arg name="ha" value="false" />
+        <constructor-arg>
+            <bean class="org.hornetq.api.core.TransportConfiguration">
+                <constructor-arg
+                        value="org.hornetq.core.remoting.impl.netty.NettyConnectorFactory"
+                />
+                <constructor-arg>
+                    <map key-type="java.lang.String" value-type="java.lang.Object">
+                        <entry key="host" value="l27.0.0.1"/>
+                        <entry key="port" value="5445"/>
+                    </map>
+                </constructor-arg>
+            </bean>
+        </constructor-arg>
+    </bean>
     <bean id="simpleMessageListener"
           class="ch12.SimpleMessageListener"/>
     <jms:listener-container container-type="default"
-                            connection-factory="connectionFactory" acknowledge="auto">
-        <jms:listener destination="prospring4"
-                      ref="simpleMessageListener" method="onMessage" />
+                            connection-factory="connectionFactory"
+                            acknowledge="auto">
+        <jms:listener destination="prospring4" ref="simpleMessageListener"
+                      method="onMessage" />
     </jms:listener-container>
 </beans>
