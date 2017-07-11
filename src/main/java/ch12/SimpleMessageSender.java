@@ -18,10 +18,8 @@ public class SimpleMessageSender implements MessageSender {
         this.jmsTemplate.send(new MessageCreator() {
             @Override
             public Message createMessage(Session session) throws JMSException {
-                throw JMSException{
                     return session.createTextMessage(message);
                 }
-            }
         });
     }
 }
