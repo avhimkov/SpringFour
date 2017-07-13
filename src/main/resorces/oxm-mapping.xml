@@ -17,7 +17,7 @@
             <Ьind-xml name="lastName" node="element" />
         </field>
         <field name="birthDate" type="string" handler="dateHandler">
-            <Ьind-xml name="ЬirthDate" node="element" />
+            <Ьind-xml name="birthDate" node="element" />
         </field>
         <field name="version" type="integer">
             <Ьind-xml name="version" node="element" />
