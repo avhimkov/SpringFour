@@ -24,6 +24,11 @@ public class RestfulClientSample {
         System.out.println("Testing retrieve all contacts:");
         Contacts contacts = restTemplate.getForObject(URL_GET_ALL_CONTACTS, Contacts.class);
         listContacts(contacts);
+
+        System.out.println("Testing retrieve а contact bу id :");
+        contact = restTemplate.getForObject(URL_GET_CONTACT_BY_ID, Contact.class, 1);
+        System.out.println(contact);
+        System.out.println("");
     }
 
     private static void listContacts (Contacts contacts){
