@@ -5,6 +5,7 @@
        http://www.springframework.org/schema/beans/spring-beans.xsd">
     <bean id="restTemplate"
           class="org.springframework.web.client.RestTemplate">
+        <constructor-arg ref="httpRequestFactory"/>
         <property name="messageConverters">
             <list>
                 <bean
@@ -27,5 +28,24 @@
           class="org.springframework.oxm.castor.CastorMarshaller">
         <property name="mappingLocation"
                   value="classpath:META-INF/oxm-mapping.xml"/>
+    </bean>
+    <bean id="httpRequestFactory"
+          class="org.springframework.http.client.HttpComponentsClientHttpRequestFactory">
+        <constructor-arg>
+            <bean class="org.apache.http.impl.client.DefaultHttpClient">
+                <property name="credentialsProvider">
+                    <bean
+                            class="ch12.CustomCredentialsProvider">
+                        <property name="credentials">
+                            <bean
+                                    class="org.apache.http.auth.UsernamePasswordCredentials">
+                                <constructor-arg name="userName" value="remote"/>
+                                <constructor-arg name="password" value="remote"/>
+                            </bean>
+                        </property>
+                    </bean>
+                </property>
+            </bean>
+        </constructor-arg>
     </bean>
 </beans>
