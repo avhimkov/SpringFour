@@ -21,19 +21,19 @@
     <bean id="weatherServiceProxy"
           class="org.springframework.amqp.remoting.client.AmqpProxyFactoryBean">
         <property name="amqpTemplate" ref="amqpTemplate" />
-        <property name="serviceinterface"
+        <property name="serviceInterface"
                   value="ch12.WeatherService" />
     </bean>
     <rabbit:listener-container connection-factory="connectionFactory">
         <rabbit:listener ref="weatherServiceExporter" queue-names="forecasts" />
     </rabbit:listener-container>
     <bean id="weatherServiceExporter"
-          class= "org.springframework.amqp.remoting.service.AmqpinvokerServiceExporter">
+          class= "org.springframework.amqp.remoting.service.AmqpInvokerServiceExporter">
         <property name="amqpTemplate" ref="amqpTemplate" />
-        <property name="serviceinterface"
+        <property name="serviceInterface"
                   value="ch12.WeatherService" />
         <property name="service">
-            <bean class="ch12.WeatherServiceimpl"/>
+            <bean class="ch12.WeatherServiceImpl"/>
         </property>
     </bean>
 </beans>
