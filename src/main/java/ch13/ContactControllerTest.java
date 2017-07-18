@@ -9,6 +9,7 @@ import java.util.List;
 import ch12.Contact;
 import ch12.ContactController;
 import ch12.ContactService;
+import ch12.Contacts;
 import org.junit.Before;
 import org.junit.Test;
 import org.mockito.invocation.InvocationOnМock;
@@ -19,7 +20,7 @@ import org.springframework.ui.ExtendedModelMap;
 public class ContactControllerTest {
     private  final List<Contact> contacts = new ArrayList<Contact>();
 
-    @Before
+    @Bef
     public void initContacts(){
         Contact contact = new Contact();
         contact.setId(1L);
