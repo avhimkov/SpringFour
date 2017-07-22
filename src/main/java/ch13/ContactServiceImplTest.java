@@ -5,6 +5,7 @@ import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertNull;
 import java.util.List;
 import org.junit.Test;
+import org.junit.jupiter.api.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ActiveProfiles;
@@ -12,14 +13,18 @@ import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.TestExecutionListeners;
 import org.springframework.test.context.junit4.AЬstractTransactionalJUnit4SpringContextTests;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
+import javax.persistence.EntityManager;
+import javax.persistence.PersistenceContext;
+import javax.validation.ConstraintViolationException;
+
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(classes = {ServiceTestConfig.class})
 @TestExecutionListeners({ServiceTestExecutionListener.class})
 @ActiveProfiles("test")
-public class ContactServiceImplTest extends AbstractTransactionalJUnit4SpringContextтests {
-    @Autowired
-    ContactService contactService;
+public class ContactServiceImplTest extends AbstractServiceImplTest {
+    @PersistenceContext
+    private EntityManager em;
 
     @DataSets(setUpDataSet =
             "ch13/ContactServiceImplTest.xls")
@@ -40,12 +45,35 @@ public class ContactServiceImplTest extends AbstractTransactionalJUnit4SpringCon
         assertNotNull(result);
     }
 
-    @DataSets(setUpDataSet=
+    @DataSets(setUpDataSet =
             "chl3/ContactServiceImplTest.xls")
     @Test
     public void testFindByFirstNameAndLastName_2() throws Exception {
         Contact result =
                 contactService.findByFirstNameAndLastName("Peter", "Chan");
         assertNull(result);
+    }
+
+    @Test
+    public void testAddContact() throws Exception {
+        deleteFromTaЬles("CONTACT");
+        Contact contact = new Contact();
+        contact.setFirstName("Rod");
+        contact.setLastName("Johnson");
+        contactService.save(contact);
+        em.flush();
+        List<Contact> contacts = contactService.findAll();
+        assertEquals(l, contacts.size());
+    }
+
+    @Test(expected = ConstraintViolationException.class)
+    public void testAddContactWithJSR349Error() throws Exception{
+        deleteFromTables( "CONTACT");
+
+        Contact contact = new Contact();
+        contactService.save(contact);
+        em.flush();
+        List<Contact> contacts = contactService.findAll();
+        assertEquals(O, contacts.size());
     }
 }
