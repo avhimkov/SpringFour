@@ -174,5 +174,8 @@
     <orderEntry type="library" name="Maven: org.dbunit:dbunit:2.4.9" level="project" />
     <orderEntry type="library" name="Maven: org.apache.poi:poi:3.2-FINAL" level="project" />
     <orderEntry type="library" name="Maven: javax.el:el-api:2.2" level="project" />
+    <orderEntry type="library" name="Maven: org.junit.jupiter:junit-jupiter-api:5.0.0-M6" level="project" />
+    <orderEntry type="library" name="Maven: org.opentest4j:opentest4j:1.0.0-M3" level="project" />
+    <orderEntry type="library" name="Maven: org.junit.platform:junit-platform-commons:1.0.0-M6" level="project" />
   </component>
 </module>
