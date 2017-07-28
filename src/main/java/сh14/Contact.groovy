@@ -13,11 +13,7 @@ class Contact {
     Contact anotherContact =
             new Contact(firstName: 42, lastName: 'Schaefer', birthDate: new Date())
 
-    println contac
-    println anotherContact
 
-    println Contact.firstName + 42
-    println anotherContact.firstName + 42
 
 }
 
