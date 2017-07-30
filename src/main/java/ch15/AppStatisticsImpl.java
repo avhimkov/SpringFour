@@ -1,9 +1,9 @@
 package ch15;
 
-import ch14.ContactService;
+import ch12.ContactService;
 import org.springframework.beans.factory.annotation.Autowired;
 
-public class AppStaticsImpl implements AppStatistic {
+public class AppStatisticsImpl implements AppStatistic {
     @Autowired
     private ContactService contactService;
 
