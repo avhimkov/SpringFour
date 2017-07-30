@@ -1,4 +1,4 @@
-package сh14;
+package ch14;
 
 import javax.script.ScriptEngine;
 import javax.script.ScriptEngineManager;

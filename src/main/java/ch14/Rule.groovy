@@ -1,4 +1,4 @@
-package сh14
+package ch14
 
 class Rule {
     private boolean singlehit = true

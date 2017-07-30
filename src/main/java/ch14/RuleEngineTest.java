@@ -1,4 +1,4 @@
-package сh14;
+package ch14;
 
 import org.joda.time.format.DateTimeFormat;
 import org.springframework.context.support.GenericXmlApplicationContext;
@@ -12,7 +12,7 @@ public class RuleEngineTest {
 
         ContactService contactService = ctx.getBean("contactService", ContactService.class);
         Contact contact = new Contact();
-        contact.setId(1l);
+//        contact.setId(1l);
         contact.setFirstName("Chris");
         contact.setLastName("Shaefer");
         contact.setBirthDate(DateTimeFormat.forPattern("yyyy-MM-dd").parseDateTime("1981-05-03"));
@@ -21,7 +21,7 @@ public class RuleEngineTest {
 
         try {
             System.in.read();
-        } catch (Exception ex){
+        } catch (Exception ex) {
             ex.printStackTrace();
         }
         contactService.applyRule(contact);

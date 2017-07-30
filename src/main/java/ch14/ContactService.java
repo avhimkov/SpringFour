@@ -1,4 +1,4 @@
-package сh14;
+package ch14;
 
 public interface ContactService {
     void applyRule(Contact contact);
