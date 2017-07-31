@@ -15,38 +15,39 @@
        http://www.springframework.org/schema/data/jpa/spring-jpa.xsd
        http://www.springframework.org/schema/tx
        http://www.springframework.org/schema/tx/spring-tx.xsd">
+    <jdbc:embedded-database id="dataSource" type="H2">
+        <jdbc:script location="classpath:META-INF/config/schema.sql"/>
+        <jdbc:script location="classpath:META-INF/config/test-data.sql"/>
+    </jdbc:embedded-database>
     <bean id="transactionManager"
-          class = "org.springframework.orm.jpa.JpaTransactionManager">
-        <property name = "entityManagerFactory" ref = "emf"/>
+          class="org.springframework.orm.jpa.JpaTransactionManager">
+        <property name="entityManagerFactory" ref="emf"/>
     </bean>
     <tx:annotation-driven transaction-manager="transactionManager" />
-    <bean id = "emf"
-          class = "org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean">
-        <property name = "dataSource" ref="dataSource" />
-        <property name = "jpaVendorAdapter">
+    <bean id="emf"
+          class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean">
+    <property name="dataSource" ref="dataSource" />
+        <property name="jpaVendorAdapter">
             <bean
-                    class = "org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter" />
+                    class="org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter" />
         </property>
-        <property name = "packagesToScan" value = "ch13"/>
-        <property name = "jpaProperties">
+        <property name="packagesToScan" value="ch15"/>
+        <property name="jpaProperties">
             <props>
-                <prop key = "hibernate.dialect">org.hibernate.dialect.H2Dialect
+                <prop key="hibernate.dialect">org.hibernate.dialect.H2Dialect
                 </prop>
-                <prop key = "hibernate.max_fetch_depth">З</prop>
-                <prop key="hibernate.jdЬc.fetch_size">SO</prop>
-                <prop key = "hibernate. jdЬc. batch _ size">lO</prop>
-                <prop key = "hibernate.show_sql">true</prop>
+                <prop key="hibernate.max fetch depth">3</prop>
+                <prop key="hibernate.jdb􀁧.fetch size">50</prop>
+                <prop key="hibernate.jdbc.batch=size">10</prop>
+                <prop key="hibernate.show_sql">true</prop>
+                <!-- Свойства статистики Hibernate -->
+                <prop key="hibernate.generate_statistics">true</prop>
+                <prop key="hibernate.session_factory_name">sessionFactory</prop>
             </props>
         </property>
     </bean>
     <context:annotation-config/>
-    <jpa:repositories base-package = "ch13"
-                      entity-manager-factory-ref = "emf"
+    <jpa:repositories base-package="ch15"
+                      entity-manager-factory-ref="emf"
                       transaction-manager-ref="transactionManager"/>
-    <beans profile="dev">
-        <jdbc:embedded-database id = "dataSource" type = "H2">
-            <jdbc:script location = "classpath:META-INF/config/schema.sql"/>
-            <jdbc:script location="classpath:META-INF/config/test-data.sql"/>
-        </jdbc:embedded-database>
-    </beans>
 </beans>
