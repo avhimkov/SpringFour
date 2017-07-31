@@ -32,7 +32,13 @@
             <map>
                 <entry key="bean:name=ProSpring4ContactApp"
                        value-ref="appStatisticsBean"/>
+                <entry key="bean:name=Prospring4ContactApp-hibernate"
+                       value-ref="statisticsBean"/>
             </map>
         </property>
+    </bean>
+    <bean id="statisticsBean" class="org.hibernate.jmx.StatisticsService">
+        <property name="statisticsEnabled" value="true"/>
+        <property name="sessionFactoryJNDIName" value="sessionFactory"/>
     </bean>
 </beans>
