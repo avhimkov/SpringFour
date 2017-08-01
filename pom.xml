@@ -425,6 +425,12 @@
             <artifactId>groovy-all</artifactId>
             <version>2.2.2</version>
         </dependency>
+        <!-- https://mvnrepository.com/artifact/joda-time/joda-time-jsptags -->
+        <dependency>
+            <groupId>joda-time</groupId>
+            <artifactId>joda-time-jsptags</artifactId>
+            <version>1.1.1</version>
+        </dependency>
 
 
         <!-- https://mvnreposhttpclientitory.com/artifact/org.springframework.data/spring-data-jpa -->
