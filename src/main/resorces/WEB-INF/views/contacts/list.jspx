@@ -4,18 +4,24 @@
      xmlns:joda = "http://www.joda.org/joda/time/tags"
      xmlns:spring = "http://www.springframework.org/tags"
      version="2.0">
-    <jsp:directive.page contentType = "text/html;charset = UTF-8"/>
+    <jsp:directive.page contentType="text/html;charset = UTF-8"/>
     <jsp:output omit-xml-declaration = "yes"/>
-    <spring:message code = "label_contact_list" var = "labelContactList"/>
+    <spring:message code = "label_contact_list" var="labelContactList"/>
     <spring:message code = "label_contact_first_name"
                     var = "labelContactFirstName"/>
-    <spring:message code="label_contact_last_name"
+    <spring:message code = "label_contact_last_name"
                     var = "labelContactLastName"/>
-    <spring:message code = "label_contact_Ьirth_date"
-                    var = "labelContactBirthDate"/>
-    <h1>${labelContactList}</h1>
-    <c:if test = "${not empty contacts}">
-    <tаЫе>
+    <spring:message code = "label_contact_birth_date"
+                    var="labelContactBirthDate"/>
+    <head>
+        <spring:theme code = "styleSheet" var = "app_css" />
+        <spring:url value = "/${app_css}" var = "app_css_url" />
+        <link rel="stylesheet" type = "text/css" media = "screen"
+              href = "${app_css_url}" />
+    </head>
+    <hl>${labelContactList}</hl>
+    <c:if test = "${ not empty contacts} ">
+    <tаblе>
     <thead>
     <tr>
         <th>${labelContactFirstName}</th>
@@ -23,16 +29,16 @@
         <th>${labelContactBirthDate}</th>
     </tr>
     </thead>
-    <tbody>
-    <c:forEach items = "${contacts}" var="contact">
-        <tr>
-            <td>${contact.firstName}</td>
-            <td>${contact.lastName}</td>
-            <td><joda:format value = "${contact.ЬirthDate}"
-                             pattern = "yyyy-ММ-dd"/></td>
-        </tr>
-    </c:forEach>
-    </tbody>
-    </tаЫе>
+        <tbody>
+        <c:forEach items = "${contacts}" var="contact">
+            <tr>
+                <td>${contact.firstName}</td>
+                <td>${contact.lastName}</td>
+                <td><joda:format value = "${contact.birthDate}"
+                                 pattern = "yyyy-ММ-dd"/></td>
+            </tr>
+        </c:forEach>
+        </tbody>
+    </tаblе>
     </c:if>
 </div>

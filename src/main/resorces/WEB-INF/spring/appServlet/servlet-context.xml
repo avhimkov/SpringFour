@@ -37,7 +37,9 @@ BundleMessageSource"
         <beans:bean
                 class = "org.springframework.web.servlet.theme.ThemeChangeinterceptor"/>
         <beans:bean
-                class="org.springframework.web.servlet.i18n.LocaleChangeinterceptor"
-                p:paramName = "lang"/>
+                class="org.springframework.web.servlet.i18n.LocaleChangeinterceptor" p:paramName = "lang"/>
     </interceptors>
+    <beans:bean class = "org.springframework.ui.context.support.ResourceBundleThemeSource" id = "themeSource"/>
+    <beans:bean class = "org.springframework.web.servlet.theme.CookieThemeResolver"
+                id = "themeResolver" p:cookieName = "theme" p:defaultThemeName = "standard"/>
 </beans:beans>
