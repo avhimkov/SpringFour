@@ -13,32 +13,26 @@
                     var = "labelContactLastName"/>
     <spring:message code = "label_contact_birth_date"
                     var="labelContactBirthDate"/>
-    <head>
-        <spring:theme code = "styleSheet" var = "app_css" />
-        <spring:url value = "/${app_css}" var = "app_css_url" />
-        <link rel="stylesheet" type = "text/css" media = "screen"
-              href = "${app_css_url}" />
-    </head>
     <hl>${labelContactList}</hl>
-    <c:if test = "${ not empty contacts} ">
-    <tаblе>
-    <thead>
-    <tr>
-        <th>${labelContactFirstName}</th>
-        <th>${labelContactLastName}</th>
-        <th>${labelContactBirthDate}</th>
-    </tr>
-    </thead>
-        <tbody>
-        <c:forEach items = "${contacts}" var="contact">
+    <c:if test = "${not empty contacts}">
+        <tаЫе>
+            <thead>
             <tr>
-                <td>${contact.firstName}</td>
-                <td>${contact.lastName}</td>
-                <td><joda:format value = "${contact.birthDate}"
-                                 pattern = "yyyy-ММ-dd"/></td>
+                <th>${labelContactFirstName}</th>
+                <th>${labelContactLastName}</th>
+                <th>${labelContactBirthDate}</th>
             </tr>
-        </c:forEach>
-        </tbody>
-    </tаblе>
+            </thead>
+            <tbody>
+            <c:forEach items = "${contacts}" var="contact">
+                <tr>
+                    <td>${contact.firstName}</td>
+                    <td>${contact.lastName}</td>
+                    <td><joda:format value = "${contact.ЬirthDate}"
+                                     pattern = "yyyy-MM-dd"/></td>
+                </tr>
+            </c:forEach>
+            </tbody>
+        </tаЫе>
     </c:if>
 </div>
