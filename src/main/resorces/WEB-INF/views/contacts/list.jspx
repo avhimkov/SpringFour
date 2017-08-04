@@ -13,9 +13,10 @@
                     var = "labelContactLastName"/>
     <spring:message code = "label_contact_birth_date"
                     var="labelContactBirthDate"/>
-    <hl>${labelContactList}</hl>
+    <spring:url value = "/contacts" var = "showContactUrl"/>
+    <h1>${labelContactList}</h1>
     <c:if test = "${not empty contacts}">
-        <tаЫе>
+        <tаblе>
             <thead>
             <tr>
                 <th>${labelContactFirstName}</th>
@@ -33,6 +34,6 @@
                 </tr>
             </c:forEach>
             </tbody>
-        </tаЫе>
+        </tаblе>
     </c:if>
 </div>
