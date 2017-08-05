@@ -10,6 +10,7 @@
             http://www.springframework.org/schema/beans/spring-beans.xsd
             http://www.springframework.org/schema/context
             http://www.springframework.org/schema/context/spring-context.xsd">
+    <annotation-driven validator = "validator"/>
     <annotation-driven />
     <resources location = "/, classpath:/МETA-INF/web-resources/"
                mapping="/resources/**"/>
@@ -42,4 +43,9 @@ BundleMessageSource"
     <beans:bean class = "org.springframework.ui.context.support.ResourceBundleThemeSource" id = "themeSource"/>
     <beans:bean class = "org.springframework.web.servlet.theme.CookieThemeResolver"
                 id = "themeResolver" p:cookieName = "theme" p:defaultThemeName = "standard"/>
+
+    <beans:bean id="validator"
+                class = "org.springframework.validation.beanvalidation.LocalValidatorFactoryBean">
+        <beans:property name = "validationMessageSource" ref="messageSource"/>
+    </beans:bean>
 </beans:beans>
