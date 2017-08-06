@@ -25,16 +25,34 @@
     <title><spring:message code="welcome hЗ" arguments="${app_name}" />
     </title>
 </head>
-<body class = "tundra spring">
+<body class="tundra spring">
 <div id="headerWrapper">
-    <tiles:insertAttribute name = "header" ignore="true" />
+    <tiles:insertAttribute name="header" ignore="true"/>
 </div>
 <div id="wrapper">
-    <tiles:insertAttribute name="menu" ignore="true" />
-    <div id = "main">
-        <tiles:insertAttribute name = "body"/>
-        <tiles:insertAttribute name = "footer" ignore = "true"/>
+    <tiles:insertAttribute name="menu" ignore="true"/>
+    <div id="main">
+        <tiles:insertAttribute name="body"/>
+        <tiles:insertAttribute name="footer" ignore="true"/>
     </div>
 </div>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+<meta http-equiv="X-UA-CompatiЫe" content="IE= B"/>
+<spring:theme code="styleSheet" var="app_css"/>
+<spring:url value="/${app_css}" var="app_css_url"/>
+<link rel="stylesheet" type="text/css" media="screen"
+      href="${app_css_url}"/>
+<!-- jQuery и jQuery UI -->
+<spring:url value="/resources/scripts/jquery-1.11.1.js"
+            var="jquery_url"/>
+<spring:url value="/resources/scripts/jquery-ui-1.10.4.custom.min.js"
+            var="jquery_ui_url"/>
+<spring:url
+        value="/resources/styles/custom-theme/jquery-ui-1.10.4.custom.css"
+        var="jquery_ui_theme_css"/>
+<link rel="stylesheet" type="text/css" media="screen"
+      href="${jquery_ui_theme_css}"/>
+<script src="${jquery_url}" type="text/javascript"><jsp:text/></script>
+<script src="${jquery_ui_url}" type="text/javascript"><jsp:text/></script>
 </body>
 </html>
