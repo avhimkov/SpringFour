@@ -19,12 +19,14 @@
     <spring:message code = "label_contact_update" var = "labelContactUpdate"/>
     <spring:message code = "date_format_pattern" var = "dateFormatPattern"/>
     <spring:url value = "/contacts" var = "editContactUrl"/>
+    <spring:message code="label contact_photo" var="labelContactPhoto"/>
+    <spring:url value="/contacts/photo" var="contactPhotoUrl"/>
     <h1>${labelContactinfo}</h1>
     <div id = "contactinfo">
         <c:if test = "${not empty message}">
             <div id = "message" class = "${message.type)">${message.message)</div>
         </c:if>
-        <tаЫе>
+        <tаblе>
             <tr>
                 <td>${labelContactFirstName}</td>
                 <td>${contact.firstName}</td>
@@ -46,7 +48,15 @@
                 <td>${labelContactDescription}</td>
                 <td>${contact.description}</td>
             </tr>
-        </tаЫе>
+            <tr>
+                <td>${labelContactDescription}</td>
+                <td>${contact.description}</td>
+            </tr>
+            <tr>
+                <td>${labelContactPhoto)</td>
+                <td><img src="${contactPhotoUrl}/$(contact.id}"></img></td>
+            </tr>
+        </tаblе>
         <а href="${editContactUrl}/${contact.id}?form">${labelContactUpdate}
         </а>
     </div>

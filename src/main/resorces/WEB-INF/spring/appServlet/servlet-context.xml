@@ -48,4 +48,7 @@ BundleMessageSource"
                 class = "org.springframework.validation.beanvalidation.LocalValidatorFactoryBean">
         <beans:property name = "validationMessageSource" ref="messageSource"/>
     </beans:bean>
+
+    <beans:bean class="org.springframework.web.multipart.support.StandardServletMultipartResolver"
+            id="multipartResolver"/>
 </beans:beans>
