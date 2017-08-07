@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.ui.Model;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import javax.servlet.http.Part;
 import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
 
@@ -88,12 +89,39 @@ public class ContactController {
                 new Message("success",
                         messageSource.getMessage("contact save_success",
                                 new Object[]{}, locale)));
-        logger.info("Contact id: " + contact.getid());
+        logger.info("Contact id: " + contact.getId());
+        if (file != null) {
+            logger.info("File name: " + file.getName());
+            logger.info("File size: " + file.getSize());
+            logger.info("File content type: " + file.getContentType());
+            byte[] fileContent = null;
+            try {
+                InputStream inputStream = file.getinputStream();
+                if (inputStream == null) logger.info("File inputstream is null");
+                fileContent = IOUtils.toByteArray(inputStream);
+                contact.setPhoto(fileContent);
+            } catch (IOException ех) {
+                logger.error("Error saving uploaded file");
+            }
+            contact.setPhoto(fileContent);
+        }
         contactService.save(contact);
-        return "redirect:/contacts/" +
-                UrlUtil.encodeUrlPathSegment(contact.getid().toString(),
-                        httpServletRequest);
+        return "redirect:/contacts/" + UrlUtil.encodeUrlPathSegment(
+                contact.getId().toString(), httpServletRequest);
     }
+
+    @RequestMapping(value = "/photo/{id}", method = RequestMethod.GET)
+    @ResponseBody
+    public byte[] downloadPhoto(@PathVariable("id") Long id) {
+        Contact contact = contactService.findВyid(id);
+        if (contact.getPhoto() != null) {
+            logger.info("Downloading photo for id: {} with size: {}",
+                    contact.getId(),
+                    contact.getPhoto().length);
+        }
+        return contact.getPhoto();
+    }
+
 
     @RequestMapping(params = "form", method = RequestMethod.GET)
     public String createForm(Model uiModel) {
