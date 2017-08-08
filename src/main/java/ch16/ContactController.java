@@ -49,16 +49,14 @@ public class ContactController {
                          RedirectAttributes redirectAttributes, Locale locale) {
         logger.info("Updating contact");
         if (bindingResult.hasErrors()) {
-            uiModel.addAttribute("message", new Message("error",
-                    messageSource.getMessage("contact_save_fail",
+            uiModel.addAttribute("message", new Message("error", messageSource.getMessage("contact_save_fail",
                             new Object[]{}, locale)));
             uiModel.addAttribute("contact", contact);
             return "contacts/update";
         }
         uiModel.asMap().clear();
         redirectAttributes.addFlashAttribute("message",
-                new Message("success",
-                        messageSource.getMessage("contact_save_success",
+                new Message("success", messageSource.getMessage("contact_save_success",
                                 new Object[]{}, locale)));
         contactService.save(contact);
         return "redirect:/contacts/"
@@ -78,8 +76,7 @@ public class ContactController {
                          RedirectAttributes redirectAttributes, Locale locale) {
         logger.info("Creating contact");
         if (bindingResult.hasErrors()) {
-            uiModel.addAttribute("message", new Message("error",
-                    messageSource.getMessage("contact_save_fail",
+            uiModel.addAttribute("message", new Message("error", messageSource.getMessage("contact_save_fail",
                             new Object[]{}, locale)));
             uiModel.addAttribute("contact", contact);
             return "contacts/create";
@@ -95,8 +92,7 @@ public class ContactController {
             logger.info("File size: " + file.getSize());
             logger.info("File content type: " + file.getContentType());
             byte[] fileContent = null;
-            try {
-                InputStream inputStream = file.getinputStream();
+            try { InputStream inputStream = file.getinputStream();
                 if (inputStream == null) logger.info("File inputstream is null");
                 fileContent = IOUtils.toByteArray(inputStream);
                 contact.setPhoto(fileContent);
@@ -149,7 +145,7 @@ public class ContactController {
                                 @RequestParam(value = "sord", required = false) String order) {
         logger.info("Listing contacts for grid with page: {}, rows: {} ", page, rows);
         logger.info("Listing contacts for grid with sort: {}, order: {}", sortBy, order);
-// Обработать поле, по которому производится сортировка
+        // Обработать поле, по которому производится сортировка
         Sort sort = null;
         String orderBy = sortBy;
         if (orderBy != null && orderBy.equals("birthDateString"))
@@ -160,9 +156,9 @@ public class ContactController {
             } else
                 sort = new Sort(Sort.Direction.ASC, orderBy);
         }
-// Сконструировать страничный запрос для текущей страницы.
-// Примечание: нумерация страниц для Spring Data JPA начинается с О,
-// тогда как в jqGrid - с 1
+        // Сконструировать страничный запрос для текущей страницы.
+        // Примечание: нумерация страниц для Spring Data JPA начинается с О,
+        // тогда как в jqGrid - с 1
         PageRequest pageRequest = null;
         if (sort != null) {
             pageRequest = new PageRequest(page - 1, rows, sort);
@@ -170,7 +166,7 @@ public class ContactController {
             pageRequest = new PageRequest(page - 1, rows);
         }
         Page<Contact> contactPage = contactService.findAllByPage(pageRequest);
-// Сконструировать сетку, которая вернет данные в формате JSON
+        // Сконструировать сетку, которая вернет данные в формате JSON
         ContactGrid contactGrid = new ContactGrid();
         contactGrid.setCurrentPage(contactPage.getNumber() + 1);
         contactGrid.setTotalPages(contactPage.getTotalPages());
