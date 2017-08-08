@@ -192,5 +192,7 @@
     <orderEntry type="library" name="Maven: org.junit.platform:junit-platform-commons:1.0.0-RC2" level="project" />
     <orderEntry type="library" scope="PROVIDED" name="Maven: javax:javaee-web-api:7.0" level="project" />
     <orderEntry type="library" name="Maven: commons-io:commons-io:2.4" level="project" />
+    <orderEntry type="library" name="Maven: org.springframework.security:spring-security-taglibs:3.2.1.RELEASE" level="project" />
+    <orderEntry type="library" name="Maven: org.springframework.security:spring-security-acl:3.2.1.RELEASE" level="project" />
   </component>
 </module>
