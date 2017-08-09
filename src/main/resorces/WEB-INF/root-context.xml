@@ -13,6 +13,7 @@
     <mvc:resources mapping = "/index.html" location="/static/" />
     <websocket:handlers>
         <websocket:mapping path = "/echoHandler" handler = "echoHandler"/>
+        <websocket:sockjs/>
     </websocket:handlers>
     <bean id="echoHandler" class = "ch17.EchoHandler"/>
 
