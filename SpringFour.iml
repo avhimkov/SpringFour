@@ -37,6 +37,7 @@
           <file>file://$MODULE_DIR$/src/main/resorces/WEB-INF/web-security.xml</file>
           <file>file://$MODULE_DIR$/src/main/resorces/META-INF/amqp-rpc-app-context.xml</file>
           <file>file://$MODULE_DIR$/src/main/resorces/META-INF/rest-context.xml</file>
+          <file>file://$MODULE_DIR$/src/main/resorces/WEB-INF/spring/appServlet/servlet-context.xml</file>
         </fileset>
       </configuration>
     </facet>
@@ -194,5 +195,9 @@
     <orderEntry type="library" name="Maven: commons-io:commons-io:2.4" level="project" />
     <orderEntry type="library" name="Maven: org.springframework.security:spring-security-taglibs:3.2.1.RELEASE" level="project" />
     <orderEntry type="library" name="Maven: org.springframework.security:spring-security-acl:3.2.1.RELEASE" level="project" />
+    <orderEntry type="library" name="Maven: org.springframework:spring-websocket:4.0.2.RELEASE" level="project" />
+    <orderEntry type="library" name="Maven: org.apache.tomcat:tomcat-websocket-api:7.0.54" level="project" />
+    <orderEntry type="library" name="Maven: org.apache.tomcat.embed:tomcat-embed-websocket:7.0.54" level="project" />
+    <orderEntry type="library" name="Maven: org.apache.tomcat.embed:tomcat-embed-core:7.0.54" level="project" />
   </component>
 </module>
