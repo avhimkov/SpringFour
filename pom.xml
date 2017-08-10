@@ -506,6 +506,12 @@
             <artifactId>tomcat-embed-websocket</artifactId>
             <version>7.0.54</version>
         </dependency>
+        <!-- https://mvnrepository.com/artifact/org.springframework/spring-messaging -->
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-messaging</artifactId>
+            <version>4.0.2.RELEASE</version>
+        </dependency>
 
     </dependencies>
 </project>
