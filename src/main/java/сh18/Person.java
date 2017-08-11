@@ -1,4 +1,4 @@
-package ср18;
+package сh18;
 
 public class Person {
     private String firstName;
